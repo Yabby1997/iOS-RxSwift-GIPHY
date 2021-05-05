@@ -41,9 +41,10 @@ extension SearchViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SearchCollectionViewCell
 
-        cell.backgroundColor = .red
+        cell.thumbnailImageView.contentMode = .scaleAspectFill
+        cell.backgroundColor = .lightGray
 
         return cell
     }

@@ -9,4 +9,6 @@ import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var thumbnailImageView: UIImageView!
 }
