@@ -52,7 +52,15 @@ extension SearchViewController: UICollectionViewDataSource {
 
         return cell
     }
+}
 
+// MARK: - UICollectionViewDelegate
+
+extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "segueToDetail", sender: self)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

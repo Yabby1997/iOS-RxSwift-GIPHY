@@ -74,6 +74,7 @@
                     <navigationItem key="navigationItem" title="GIPHY" id="RWW-2M-GNP"/>
                     <connections>
                         <outlet property="resultCollectionView" destination="bfN-X9-vsT" id="ag7-pv-bi6"/>
+                        <segue destination="A38-wN-Hx5" kind="push" identifier="segueToDetail" id="FyA-iy-0jv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -97,6 +98,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ijj-ob-XoF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="34.782608695652179" y="137.94642857142856"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Aol-0x-pBR">
+            <objects>
+                <viewController id="A38-wN-Hx5" customClass="DetailViewController" customModule="RxGIF" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DYg-rK-Cte">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-I0-ihY" customClass="FLAnimatedImageView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WPX-I0-ihY" secondAttribute="height" multiplier="1:1" id="wNu-9y-Z3g"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtB-1W-M3j">
+                                <rect key="frame" x="8" y="510" width="398" height="30"/>
+                                <state key="normal" title="GIF Clipboard에 복사하기"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="대충 GIF에 관한 설명" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNz-OA-CDN">
+                                <rect key="frame" x="8" y="548" width="398" height="314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f2T-La-p7c"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WPX-I0-ihY" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" id="3VK-Xa-RVy"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="WPX-I0-ihY" secondAttribute="trailing" id="63r-QR-1bL"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="KNz-OA-CDN" secondAttribute="trailing" constant="8" id="GX5-kp-yrd"/>
+                            <constraint firstItem="KNz-OA-CDN" firstAttribute="top" secondItem="gtB-1W-M3j" secondAttribute="bottom" constant="8" id="JzU-K2-mMu"/>
+                            <constraint firstItem="gtB-1W-M3j" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="KCo-Mr-p6Y"/>
+                            <constraint firstItem="KNz-OA-CDN" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="L1l-zQ-lWA"/>
+                            <constraint firstItem="WPX-I0-ihY" firstAttribute="top" secondItem="f2T-La-p7c" secondAttribute="top" id="SIz-SU-ahh"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="bottom" secondItem="KNz-OA-CDN" secondAttribute="bottom" id="nKx-bG-3qI"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="gtB-1W-M3j" secondAttribute="trailing" constant="8" id="sOb-Ml-8EO"/>
+                            <constraint firstItem="gtB-1W-M3j" firstAttribute="top" secondItem="WPX-I0-ihY" secondAttribute="bottom" constant="8" id="zCy-uD-aBm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7vE-gE-WMS"/>
+                    <connections>
+                        <outlet property="gifImageView" destination="WPX-I0-ihY" id="ceX-HI-rSb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCT-S9-Sfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1660.8695652173915" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>

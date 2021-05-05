@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		1DFD49942642E05B0009D052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFD49922642E05B0009D052 /* LaunchScreen.storyboard */; };
 		1DFD49A52642E1B10009D052 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49A42642E1B10009D052 /* SearchCollectionViewCell.swift */; };
 		1DFD49B12642EA790009D052 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49B02642EA790009D052 /* Extensions.swift */; };
+		1DFD49C22642F0B10009D052 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49C12642F0B10009D052 /* DetailViewController.swift */; };
 		5D15EAF86D31F66F028C839D /* Pods_RxGIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EEF5A392D082F9DCA5BDEF /* Pods_RxGIF.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		1DFD49952642E05B0009D052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DFD49A42642E1B10009D052 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		1DFD49B02642EA790009D052 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1DFD49C12642F0B10009D052 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = RxGIF/ViewController/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		99EEF5A392D082F9DCA5BDEF /* Pods_RxGIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxGIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C717224880F92BCA28901726 /* Pods-RxGIF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGIF.release.xcconfig"; path = "Target Support Files/Pods-RxGIF/Pods-RxGIF.release.xcconfig"; sourceTree = "<group>"; };
 		D9260D7A1000C78459CE81BD /* Pods-RxGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGIF.debug.xcconfig"; path = "Target Support Files/Pods-RxGIF/Pods-RxGIF.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		1DFD499C2642E1290009D052 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1DFD49C12642F0B10009D052 /* DetailViewController.swift */,
 				1DFD498B2642E0580009D052 /* SearchViewController.swift */,
 			);
 			path = ViewController;
@@ -142,7 +145,6 @@
 				D9260D7A1000C78459CE81BD /* Pods-RxGIF.debug.xcconfig */,
 				C717224880F92BCA28901726 /* Pods-RxGIF.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -263,6 +265,7 @@
 				1DFD49B12642EA790009D052 /* Extensions.swift in Sources */,
 				1DFD498C2642E0580009D052 /* SearchViewController.swift in Sources */,
 				1DFD49882642E0580009D052 /* AppDelegate.swift in Sources */,
+				1DFD49C22642F0B10009D052 /* DetailViewController.swift in Sources */,
 				1DFD498A2642E0580009D052 /* SceneDelegate.swift in Sources */,
 				1DFD49A52642E1B10009D052 /* SearchCollectionViewCell.swift in Sources */,
 			);
