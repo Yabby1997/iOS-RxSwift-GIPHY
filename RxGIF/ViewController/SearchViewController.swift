@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FLAnimatedImage
 
 class SearchViewController: UIViewController {
 
@@ -43,6 +44,9 @@ extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SearchCollectionViewCell
 
+        let gifData = NSDataAsset(name: "nyan")
+        let gif = FLAnimatedImage(gifData: gifData?.data)
+        cell.thumbnailImageView.animatedImage = gif
         cell.thumbnailImageView.contentMode = .scaleAspectFill
         cell.backgroundColor = .lightGray
 
