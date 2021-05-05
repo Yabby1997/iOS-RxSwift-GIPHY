@@ -117,8 +117,20 @@
                                 <rect key="frame" x="8" y="510" width="398" height="30"/>
                                 <state key="normal" title="GIF Clipboard에 복사하기"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="대충 GIF에 관한 설명" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNz-OA-CDN">
-                                <rect key="frame" x="8" y="548" width="398" height="314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nyan Cat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hG5-YO-SAS">
+                                <rect key="frame" x="8" y="590" width="398" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.05.06." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag0-hh-sw1">
+                                <rect key="frame" x="8" y="628" width="398" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="youtube.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="260-jz-1p7">
+                                <rect key="frame" x="8" y="657" width="398" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -127,16 +139,21 @@
                         <viewLayoutGuide key="safeArea" id="f2T-La-p7c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="260-jz-1p7" firstAttribute="top" secondItem="Ag0-hh-sw1" secondAttribute="bottom" constant="8" id="2h4-de-ICY"/>
                             <constraint firstItem="WPX-I0-ihY" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" id="3VK-Xa-RVy"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="Ag0-hh-sw1" secondAttribute="trailing" constant="8" id="5lH-go-6uS"/>
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="WPX-I0-ihY" secondAttribute="trailing" id="63r-QR-1bL"/>
-                            <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="KNz-OA-CDN" secondAttribute="trailing" constant="8" id="GX5-kp-yrd"/>
-                            <constraint firstItem="KNz-OA-CDN" firstAttribute="top" secondItem="gtB-1W-M3j" secondAttribute="bottom" constant="8" id="JzU-K2-mMu"/>
+                            <constraint firstItem="hG5-YO-SAS" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="7zh-Fc-GGz"/>
+                            <constraint firstItem="hG5-YO-SAS" firstAttribute="top" secondItem="gtB-1W-M3j" secondAttribute="bottom" constant="50" id="Ilk-Hq-kfr"/>
                             <constraint firstItem="gtB-1W-M3j" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="KCo-Mr-p6Y"/>
-                            <constraint firstItem="KNz-OA-CDN" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="L1l-zQ-lWA"/>
                             <constraint firstItem="WPX-I0-ihY" firstAttribute="top" secondItem="f2T-La-p7c" secondAttribute="top" id="SIz-SU-ahh"/>
-                            <constraint firstItem="f2T-La-p7c" firstAttribute="bottom" secondItem="KNz-OA-CDN" secondAttribute="bottom" id="nKx-bG-3qI"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="260-jz-1p7" secondAttribute="trailing" constant="8" id="T4a-hB-uOl"/>
+                            <constraint firstItem="Ag0-hh-sw1" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="aCm-Oy-3me"/>
+                            <constraint firstItem="Ag0-hh-sw1" firstAttribute="top" secondItem="hG5-YO-SAS" secondAttribute="bottom" constant="8" id="l37-Gn-oIC"/>
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="gtB-1W-M3j" secondAttribute="trailing" constant="8" id="sOb-Ml-8EO"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="hG5-YO-SAS" secondAttribute="trailing" constant="8" id="vJp-ae-BqR"/>
                             <constraint firstItem="gtB-1W-M3j" firstAttribute="top" secondItem="WPX-I0-ihY" secondAttribute="bottom" constant="8" id="zCy-uD-aBm"/>
+                            <constraint firstItem="260-jz-1p7" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="zYc-ln-DZB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7vE-gE-WMS"/>
