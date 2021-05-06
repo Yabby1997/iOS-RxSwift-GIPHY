@@ -20,6 +20,10 @@ class SearchViewController: UIViewController {
     var viewModel: SearchViewModel = SearchViewModel()
     var disposeBag: DisposeBag = DisposeBag()
     
+    let nukeOptions = ImageLoadingOptions(
+        transition: .fadeIn(duration: 0.45)
+    )
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var resultCollectionView: UICollectionView!
@@ -35,7 +39,8 @@ class SearchViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
                 
-                Nuke.loadImage(with: item.thumbnailURL, into: cell.thumbnailImageView)
+                cell.backgroundColor = .systemGray5
+                Nuke.loadImage(with: item.thumbnailURL, options: self.nukeOptions, into: cell.thumbnailImageView)
                 cell.thumbnailImageView.contentMode = .scaleAspectFill
             }
             .disposed(by: disposeBag)
