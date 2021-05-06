@@ -35,6 +35,9 @@ class SearchViewController: UIViewController {
         
         ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
         
+        resultCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
@@ -65,6 +68,7 @@ extension SearchViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
