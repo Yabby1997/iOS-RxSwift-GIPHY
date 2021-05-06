@@ -11,8 +11,16 @@ struct Gif {
     let title: String           // title
     let source: String          // source_tld
     let trendingDate: String    // trending_datetime
-    let thumbnailURL: String    // images/downsized_small
-    let originalURL: String     // images/original
+    let thumbnailURL: URL    // images/downsized_small
+    let originalURL: URL     // images/original
+    
+    init(from response: GifResponse) {
+        self.title = response.title
+        self.source = response.source
+        self.trendingDate = response.trendingDatetime
+        self.thumbnailURL = URL(string: response.getThumbnailURL())!
+        self.originalURL = URL(string: response.getOriginalURL())!
+    }
 }
 
 struct GifResponseArray: Decodable {

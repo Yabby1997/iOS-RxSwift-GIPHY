@@ -7,13 +7,16 @@
 
 import UIKit
 import FLAnimatedImage
+import RxCocoa
+import RxSwift
 
 class SearchViewController: UIViewController {
 
     // MARK: - Properties
     
     let cellIdentifier: String = "SearchViewCell"
-    var viewModel: SearchViewModel?
+    var viewModel: SearchViewModel = SearchViewModel()
+    var disposeBag: DisposeBag = DisposeBag()
     
     // MARK: - IBOutlets
     
@@ -24,37 +27,27 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel = SearchViewModel()
-        
-        self.resultCollectionView.dataSource = self
-        self.resultCollectionView.delegate = self
+        self.viewModel.gifObservable
+            .observeOn(MainScheduler.instance)
+            .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
+                
+                do {
+                    let gifData = try Data(contentsOf: item.thumbnailURL)
+                    cell.thumbnailImageView.animatedImage = FLAnimatedImage(gifData: gifData)
+                } catch {
+                    let gifData = NSDataAsset(name: "nyan")
+                    cell.thumbnailImageView.animatedImage = FLAnimatedImage(gifData: gifData?.data)
+                }
+                cell.thumbnailImageView.contentMode = .scaleAspectFill
+            }
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Helpers
     
     
-    // MARK: - IBACtions
+    // MARK: - IBActions
 
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension SearchViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SearchCollectionViewCell
-
-        let gifData = NSDataAsset(name: "nyan")
-        let gif = FLAnimatedImage(gifData: gifData?.data)
-        cell.thumbnailImageView.animatedImage = gif
-        cell.thumbnailImageView.contentMode = .scaleAspectFill
-        cell.backgroundColor = .lightGray
-
-        return cell
-    }
 }
 
 // MARK: - UICollectionViewDelegate

@@ -21,8 +21,8 @@ class SearchViewModel {
             }
             .map { GifResponseArray -> [Gif] in
                 var gifArray: [Gif] = []
-                for eachGif in GifResponseArray.gifs  {
-                    gifArray.append(Gif(title: eachGif.title, source: eachGif.source, trendingDate: eachGif.trendingDatetime, thumbnailURL: eachGif.getThumbnailURL(), originalURL: eachGif.getOriginalURL()))
+                for each in GifResponseArray.gifs  {
+                    gifArray.append(Gif(from: each))
                 }
                 return gifArray
             }
