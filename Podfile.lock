@@ -1,16 +1,30 @@
 PODS:
   - FLAnimatedImage (1.0.16)
+  - RxCocoa (6.1.0):
+    - RxRelay (= 6.1.0)
+    - RxSwift (= 6.1.0)
+  - RxRelay (6.1.0):
+    - RxSwift (= 6.1.0)
+  - RxSwift (6.1.0)
 
 DEPENDENCIES:
   - FLAnimatedImage
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
     - FLAnimatedImage
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
+  RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
+  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 1244b76577842777f00c12126f084107afdce378
+PODFILE CHECKSUM: bce57ad00f166d4da94b88cee4d32f6158296076
 
 COCOAPODS: 1.10.1

@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
     
     let cellIdentifier: String = "SearchViewCell"
+    var viewModel: SearchViewModel?
     
     // MARK: - IBOutlets
     
@@ -22,6 +23,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewModel = SearchViewModel()
         
         self.resultCollectionView.dataSource = self
         self.resultCollectionView.delegate = self

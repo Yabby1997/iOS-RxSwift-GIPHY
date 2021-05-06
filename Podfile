@@ -8,5 +8,7 @@ target 'RxGIF' do
   # Pods for RxGIF
 
   pod 'FLAnimatedImage'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 end
