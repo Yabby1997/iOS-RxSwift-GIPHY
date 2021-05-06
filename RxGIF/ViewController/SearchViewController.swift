@@ -9,6 +9,8 @@ import UIKit
 import FLAnimatedImage
 import RxCocoa
 import RxSwift
+import Nuke
+import NukeFLAnimatedImagePlugin
 
 class SearchViewController: UIViewController {
 
@@ -27,17 +29,13 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
+        
         self.viewModel.gifObservable
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
                 
-                do {
-                    let gifData = try Data(contentsOf: item.thumbnailURL)
-                    cell.thumbnailImageView.animatedImage = FLAnimatedImage(gifData: gifData)
-                } catch {
-                    let gifData = NSDataAsset(name: "nyan")
-                    cell.thumbnailImageView.animatedImage = FLAnimatedImage(gifData: gifData?.data)
-                }
+                Nuke.loadImage(with: item.thumbnailURL, into: cell.thumbnailImageView)
                 cell.thumbnailImageView.contentMode = .scaleAspectFill
             }
             .disposed(by: disposeBag)

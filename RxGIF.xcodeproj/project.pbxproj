@@ -19,7 +19,7 @@
 		1DFD49C92642F8170009D052 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49C82642F8170009D052 /* SearchViewModel.swift */; };
 		1DFD49D12642FA9F0009D052 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49D02642FA9F0009D052 /* APIService.swift */; };
 		1DFD49DE26430B0D0009D052 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49DD26430B0D0009D052 /* Constants.swift */; };
-		5D15EAF86D31F66F028C839D /* Pods_RxGIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EEF5A392D082F9DCA5BDEF /* Pods_RxGIF.framework */; };
+		FEBE54D419F7EE0032BF93EB /* Pods_RxGIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2DDB7BD5208158DFF2A0BF /* Pods_RxGIF.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +37,9 @@
 		1DFD49C82642F8170009D052 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1DFD49D02642FA9F0009D052 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1DFD49DD26430B0D0009D052 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		99EEF5A392D082F9DCA5BDEF /* Pods_RxGIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxGIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C717224880F92BCA28901726 /* Pods-RxGIF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGIF.release.xcconfig"; path = "Target Support Files/Pods-RxGIF/Pods-RxGIF.release.xcconfig"; sourceTree = "<group>"; };
-		D9260D7A1000C78459CE81BD /* Pods-RxGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGIF.debug.xcconfig"; path = "Target Support Files/Pods-RxGIF/Pods-RxGIF.debug.xcconfig"; sourceTree = "<group>"; };
+		8A2DDB7BD5208158DFF2A0BF /* Pods_RxGIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxGIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF975D9173EB2621AE788A21 /* Pods-RxGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGIF.debug.xcconfig"; path = "Target Support Files/Pods-RxGIF/Pods-RxGIF.debug.xcconfig"; sourceTree = "<group>"; };
+		FB5C33958A81D0DFEDA40213 /* Pods-RxGIF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGIF.release.xcconfig"; path = "Target Support Files/Pods-RxGIF/Pods-RxGIF.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,28 +47,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D15EAF86D31F66F028C839D /* Pods_RxGIF.framework in Frameworks */,
+				FEBE54D419F7EE0032BF93EB /* Pods_RxGIF.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12199B9AB2DD29A9B5B2B7B9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				99EEF5A392D082F9DCA5BDEF /* Pods_RxGIF.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		1DFD497B2642E0580009D052 = {
 			isa = PBXGroup;
 			children = (
 				1DFD49862642E0580009D052 /* RxGIF */,
 				1DFD49852642E0580009D052 /* Products */,
 				222398FE36870809ECA81744 /* Pods */,
-				12199B9AB2DD29A9B5B2B7B9 /* Frameworks */,
+				EF3A8F08BF9312EAEB02D2B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,10 +143,18 @@
 		222398FE36870809ECA81744 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D9260D7A1000C78459CE81BD /* Pods-RxGIF.debug.xcconfig */,
-				C717224880F92BCA28901726 /* Pods-RxGIF.release.xcconfig */,
+				EF975D9173EB2621AE788A21 /* Pods-RxGIF.debug.xcconfig */,
+				FB5C33958A81D0DFEDA40213 /* Pods-RxGIF.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EF3A8F08BF9312EAEB02D2B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A2DDB7BD5208158DFF2A0BF /* Pods_RxGIF.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,11 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DFD49982642E05B0009D052 /* Build configuration list for PBXNativeTarget "RxGIF" */;
 			buildPhases = (
-				D22A777BCE046E77276AF091 /* [CP] Check Pods Manifest.lock */,
+				33F59A5A238DE70A8FB26BAF /* [CP] Check Pods Manifest.lock */,
 				1DFD49802642E0580009D052 /* Sources */,
 				1DFD49812642E0580009D052 /* Frameworks */,
 				1DFD49822642E0580009D052 /* Resources */,
-				F145A46D79839FE250134EC6 /* [CP] Embed Pods Frameworks */,
+				0678B0C19C7D4EF6BF5B11BC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -225,7 +225,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D22A777BCE046E77276AF091 /* [CP] Check Pods Manifest.lock */ = {
+		0678B0C19C7D4EF6BF5B11BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RxGIF/Pods-RxGIF-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RxGIF/Pods-RxGIF-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RxGIF/Pods-RxGIF-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33F59A5A238DE70A8FB26BAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,23 +262,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F145A46D79839FE250134EC6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RxGIF/Pods-RxGIF-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RxGIF/Pods-RxGIF-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RxGIF/Pods-RxGIF-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -423,7 +423,7 @@
 		};
 		1DFD49992642E05B0009D052 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9260D7A1000C78459CE81BD /* Pods-RxGIF.debug.xcconfig */;
+			baseConfigurationReference = EF975D9173EB2621AE788A21 /* Pods-RxGIF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -443,7 +443,7 @@
 		};
 		1DFD499A2642E05B0009D052 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C717224880F92BCA28901726 /* Pods-RxGIF.release.xcconfig */;
+			baseConfigurationReference = FB5C33958A81D0DFEDA40213 /* Pods-RxGIF.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

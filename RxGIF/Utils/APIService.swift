@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-let api = "https://api.giphy.com/v1/gifs/search?api_key=\(API_KEY)&q=cat&limit=25&offset=0&rating=g&lang=en"
+let api = "https://api.giphy.com/v1/gifs/search?api_key=\(API_KEY)&q=cat&limit=100&offset=0&rating=g&lang=en"
 
 class APIService {
     static func fetchGif(onComplete: @escaping (Result<Data, Error>) -> Void) {

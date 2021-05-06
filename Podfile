@@ -10,5 +10,7 @@ target 'RxGIF' do
   pod 'FLAnimatedImage'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Nuke'
+  pod 'Nuke-FLAnimatedImage-Plugin'
 
 end

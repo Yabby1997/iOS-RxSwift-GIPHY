@@ -8,6 +8,7 @@
 import Foundation
 import RxRelay
 import RxSwift
+import FLAnimatedImage
 
 class SearchViewModel {
     lazy var gifObservable = BehaviorRelay<[Gif]>(value: [])
