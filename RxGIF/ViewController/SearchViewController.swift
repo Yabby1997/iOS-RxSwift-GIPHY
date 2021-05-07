@@ -38,6 +38,9 @@ class SearchViewController: UIViewController {
         
         resultCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        self.searchBar.delegate = self
+        
+        self.resultCollectionView.keyboardDismissMode = .onDrag
         
         self.searchBar.rx.text.orEmpty
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
@@ -97,3 +100,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+}
