@@ -8,11 +8,14 @@
 import UIKit
 import FLAnimatedImage
 import Nuke
+import RxCocoa
+import RxSwift
 
 class DetailViewController: UIViewController {
 
     // MARK: - Properties
     var gif: Gif?
+    let disposeBag = DisposeBag()
     
     // MARK: - IBOutlets
     
@@ -27,6 +30,15 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        self.copyButton.rx.tap
+            .bind {
+                guard let gif = self.gif else { return }
+                
+                let data = NSData(contentsOf: gif.originalURL)
+                UIPasteboard.general.setData(data! as Data, forPasteboardType: "com.compuserve.gif")
+            }
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Helpers
@@ -38,7 +50,5 @@ class DetailViewController: UIViewController {
         self.trendingLabel.text = gif.trendingDate
         self.sourceLabel.text = gif.source
     }
-    
-    // MARK: - IBActions
     
 }
