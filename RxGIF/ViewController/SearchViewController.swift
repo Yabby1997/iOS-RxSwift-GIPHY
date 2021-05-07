@@ -39,6 +39,18 @@ class SearchViewController: UIViewController {
         resultCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
+        self.searchBar.rx.text.orEmpty
+            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .filter({ (text) -> Bool in
+                text != ""
+            })
+            .subscribe(onNext: { text in
+                self.searchBar.endEditing(true)
+                self.viewModel.searchText = text
+            })
+            .disposed(by: disposeBag)
+        
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
