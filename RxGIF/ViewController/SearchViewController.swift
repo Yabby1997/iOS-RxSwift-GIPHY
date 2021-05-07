@@ -20,10 +20,6 @@ class SearchViewController: UIViewController {
     var viewModel: SearchViewModel = SearchViewModel()
     var disposeBag: DisposeBag = DisposeBag()
     
-    let nukeOptions = ImageLoadingOptions(
-        transition: .fadeIn(duration: 0.45)
-    )
-    
     // MARK: - IBOutlets
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -59,7 +55,7 @@ class SearchViewController: UIViewController {
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
                 
                 cell.backgroundColor = .systemGray5
-                Nuke.loadImage(with: item.thumbnailURL, options: self.nukeOptions, into: cell.thumbnailImageView)
+                Nuke.loadImage(with: item.thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
                 cell.thumbnailImageView.contentMode = .scaleAspectFill
             }
             .disposed(by: disposeBag)
@@ -76,8 +72,10 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let detailViewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
         
-        performSegue(withIdentifier: "segueToDetail", sender: self)
+        detailViewController.gif = self.viewModel.gifObservable.value[indexPath.row]
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 

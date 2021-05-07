@@ -103,7 +103,7 @@
         <!--Detail View Controller-->
         <scene sceneID="Aol-0x-pBR">
             <objects>
-                <viewController id="A38-wN-Hx5" customClass="DetailViewController" customModule="RxGIF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="A38-wN-Hx5" customClass="DetailViewController" customModule="RxGIF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DYg-rK-Cte">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,7 +159,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="7vE-gE-WMS"/>
                     <connections>
+                        <outlet property="copyButton" destination="gtB-1W-M3j" id="p3e-Mc-03m"/>
                         <outlet property="gifImageView" destination="WPX-I0-ihY" id="ceX-HI-rSb"/>
+                        <outlet property="sourceLabel" destination="260-jz-1p7" id="lMa-0y-EaM"/>
+                        <outlet property="titleLabel" destination="hG5-YO-SAS" id="Ckw-A8-jar"/>
+                        <outlet property="trendingLabel" destination="Ag0-hh-sw1" id="5Mc-hl-hx0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCT-S9-Sfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
