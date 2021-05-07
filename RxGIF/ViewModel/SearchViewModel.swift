@@ -12,10 +12,11 @@ import FLAnimatedImage
 
 class SearchViewModel {
     lazy var gifObservable = BehaviorRelay<[Gif]>(value: [])
+    var searchText = ""
     
     init() {
         print("init")
-        _ = APIService.fetchGifRx()
+        _ = APIService.fetchGifRx(keyword: "spongebob")
             .map { data -> GifResponseArray in
                 let object = try! JSONDecoder().decode(GifResponseArray.self, from: data)
                 return object

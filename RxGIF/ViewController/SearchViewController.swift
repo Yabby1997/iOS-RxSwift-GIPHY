@@ -26,6 +26,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
     // MARK: - Lifecycles
@@ -83,3 +84,4 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: width)
     }
 }
+

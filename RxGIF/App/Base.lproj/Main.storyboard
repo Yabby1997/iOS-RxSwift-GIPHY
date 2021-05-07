@@ -74,6 +74,7 @@
                     <navigationItem key="navigationItem" title="GIPHY" id="RWW-2M-GNP"/>
                     <connections>
                         <outlet property="resultCollectionView" destination="bfN-X9-vsT" id="ag7-pv-bi6"/>
+                        <outlet property="searchBar" destination="GiU-Xf-GAv" id="AnQ-lt-nDw"/>
                         <segue destination="A38-wN-Hx5" kind="push" identifier="segueToDetail" id="FyA-iy-0jv"/>
                     </connections>
                 </viewController>
