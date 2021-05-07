@@ -117,6 +117,9 @@
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtB-1W-M3j">
                                 <rect key="frame" x="8" y="510" width="398" height="30"/>
                                 <state key="normal" title="Clipboard에 복사하기"/>
+                                <connections>
+                                    <action selector="didTapCopyButton:" destination="A38-wN-Hx5" eventType="touchUpInside" id="PFo-2K-rCh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nyan Cat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hG5-YO-SAS">
                                 <rect key="frame" x="8" y="590" width="398" height="30"/>
@@ -159,7 +162,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="7vE-gE-WMS"/>
                     <connections>
-                        <outlet property="copyButton" destination="gtB-1W-M3j" id="rg5-n4-fA5"/>
                         <outlet property="gifImageView" destination="WPX-I0-ihY" id="ceX-HI-rSb"/>
                         <outlet property="sourceLabel" destination="260-jz-1p7" id="lMa-0y-EaM"/>
                         <outlet property="titleLabel" destination="hG5-YO-SAS" id="Ckw-A8-jar"/>
