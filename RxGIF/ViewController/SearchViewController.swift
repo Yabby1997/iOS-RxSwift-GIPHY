@@ -47,7 +47,7 @@ class SearchViewController: UIViewController {
             })
             .subscribe(onNext: { text in
                 self.searchBar.endEditing(true)
-                self.viewModel.searchText = text
+                self.viewModel.searchGif(keyword: text)
             })
             .disposed(by: disposeBag)
         
