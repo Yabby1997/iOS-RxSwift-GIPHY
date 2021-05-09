@@ -8,6 +8,7 @@
 import UIKit
 import FLAnimatedImage
 import Nuke
+import NotificationBannerSwift
 
 class DetailViewController: UIViewController {
 
@@ -41,11 +42,29 @@ class DetailViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func didTapCopyButton(_ sender: Any) {
+        let successBanner = NotificationBanner(subtitle: "Clipboard에 복사완료!", style: .success)
+        let failedBanner = NotificationBanner(subtitle: "Clipboard에 복사실패", style: .danger)
+        successBanner.haptic = .heavy
+        failedBanner.haptic = .heavy
+        
         DispatchQueue.global().async {
-            guard let gif = self.gif else { return }
+            guard let gif = self.gif else {
+                DispatchQueue.main.sync {
+                    failedBanner.show()
+                }
+                return
+            }
             
-            let data = NSData(contentsOf: gif.originalURL)
-            UIPasteboard.general.setData(data! as Data, forPasteboardType: "com.compuserve.gif")
+            guard let data = NSData(contentsOf: gif.originalURL) else {
+                DispatchQueue.main.sync {
+                    failedBanner.show()
+                }
+                return
+            }
+            UIPasteboard.general.setData(data as Data, forPasteboardType: "com.compuserve.gif")
+            DispatchQueue.main.sync {
+                successBanner.show()
+            }
         }
     }
 }

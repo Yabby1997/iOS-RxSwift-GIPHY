@@ -1,5 +1,9 @@
 PODS:
   - FLAnimatedImage (1.0.16)
+  - MarqueeLabel (4.0.5)
+  - NotificationBannerSwift (3.0.6):
+    - MarqueeLabel (~> 4.0.5)
+    - SnapKit (~> 5.0.1)
   - Nuke (9.5.0)
   - Nuke-FLAnimatedImage-Plugin (7.1.0):
     - FLAnimatedImage (~> 1.0)
@@ -10,9 +14,11 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - FLAnimatedImage
+  - NotificationBannerSwift (~> 3.0.0)
   - Nuke
   - Nuke-FLAnimatedImage-Plugin
   - RxCocoa
@@ -21,20 +27,26 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FLAnimatedImage
+    - MarqueeLabel
+    - NotificationBannerSwift
     - Nuke
     - Nuke-FLAnimatedImage-Plugin
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SnapKit
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
+  NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
   Nuke-FLAnimatedImage-Plugin: d4e97ea8c34d101c3b63f7cc44359acd5022cfe8
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 6d8bc38154abcab64efac1f0c728334f9950a088
+PODFILE CHECKSUM: 795753dc59163b2aef6bef546962dfabe9d1bde6
 
 COCOAPODS: 1.10.1
