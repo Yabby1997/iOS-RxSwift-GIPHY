@@ -30,6 +30,13 @@ struct GifResponseArray: Decodable {
     }
 }
 
+struct SingleGifResponse: Decodable {
+    var gif: GifResponse
+    enum CodingKeys: String, CodingKey {
+        case gif = "data"
+    }
+}
+
 struct GifResponse: Decodable {
     var title: String
     var source: String

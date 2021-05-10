@@ -16,6 +16,7 @@ class APIService {
             apiURL = URL(string: searchAPI + API_KEY + searchQuery + keyword + settings)
         } else {
             apiURL = URL(string: randomAPI + API_KEY + settings)
+            print(randomAPI + API_KEY + settings)
         }
         guard let apiURL = apiURL else { return }
         
@@ -35,7 +36,7 @@ class APIService {
         }.resume()
     }
     
-    static func fetchGifRx(keyword: String) -> Observable<Data> {
+    static func fetchGifRx(keyword: String?) -> Observable<Data> {
         return Observable.create() { emitter in
             fetchGif(keyword: keyword) { result in
                 switch result {

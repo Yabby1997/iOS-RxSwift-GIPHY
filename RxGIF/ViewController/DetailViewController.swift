@@ -40,31 +40,38 @@ class DetailViewController: UIViewController {
         self.sourceLabel.text = gif.source
     }
     
+    func showBanner(success: Bool) {
+        let title = success ? "복사완료!" : "복사실패"
+        let subtitle = success ? gif!.title : "Clipboard 복사에 실패하였습니다."
+        self.banner?.dismiss()
+        self.banner = NotificationBanner(title: title, subtitle: subtitle, style: .success)
+        self.banner?.haptic = .heavy
+        self.banner?.duration = TimeInterval(1.5)
+        self.banner?.bannerHeight = 100
+        self.banner?.show()
+    }
+    
     // MARK: - IBActions
     
     @IBAction func didTapCopyButton(_ sender: Any) {
-        let successBanner = NotificationBanner(subtitle: "Clipboard에 복사완료!", style: .success)
-        let failedBanner = NotificationBanner(subtitle: "Clipboard에 복사실패", style: .danger)
-        successBanner.haptic = .heavy
-        failedBanner.haptic = .heavy
-        
         DispatchQueue.global().async {
             guard let gif = self.gif else {
                 DispatchQueue.main.sync {
-                    failedBanner.show()
+                    self.showBanner(success: false)
                 }
                 return
             }
             
             guard let data = NSData(contentsOf: gif.originalURL) else {
                 DispatchQueue.main.sync {
-                    failedBanner.show()
+                    self.showBanner(success: false)
                 }
                 return
             }
+            
             UIPasteboard.general.setData(data as Data, forPasteboardType: "com.compuserve.gif")
             DispatchQueue.main.sync {
-                successBanner.show()
+                self.showBanner(success: true)
             }
         }
     }
