@@ -43,16 +43,23 @@ class RandomViewController: UIViewController {
     // MARK: - Helpers
     
     func configureUI() {
+        self.gifImageView.backgroundColor = .systemGray5
         self.gifImageView.contentMode = .scaleAspectFit
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.gifImageViewTapped))
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.gifImageViewSwiped))
+        swipeGesture.direction = .left
         self.gifImageView.addGestureRecognizer(tapGesture)
+        self.gifImageView.addGestureRecognizer(swipeGesture)
         self.gifImageView.isUserInteractionEnabled = true
     }
     
     // MARK: - Actions
-    
     @objc func gifImageViewTapped() {
-        self.viewModel.getRandomGif()
+        self.gifImageView.contentMode = self.gifImageView.contentMode == .scaleAspectFit ? .scaleAspectFill : .scaleAspectFit
     }
     
+    @objc func gifImageViewSwiped(_ sender: UISwipeGestureRecognizer) {
+        self.viewModel.getRandomGif()
+    }
 }

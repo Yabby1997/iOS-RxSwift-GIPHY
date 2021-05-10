@@ -139,33 +139,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-I0-ihY" customClass="FLAnimatedImageView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="WPX-I0-ihY" secondAttribute="height" multiplier="1:1" id="wNu-9y-Z3g"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-I0-ihY" customClass="FLAnimatedImageView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="559"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtB-1W-M3j">
-                                <rect key="frame" x="8" y="510" width="398" height="30"/>
+                                <rect key="frame" x="8" y="655" width="398" height="30"/>
                                 <state key="normal" title="Clipboard에 복사하기"/>
                                 <connections>
                                     <action selector="didTapCopyButton:" destination="A38-wN-Hx5" eventType="touchUpInside" id="PFo-2K-rCh"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nyan Cat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hG5-YO-SAS">
-                                <rect key="frame" x="8" y="590" width="398" height="30"/>
+                                <rect key="frame" x="8" y="705" width="398" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.05.06." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag0-hh-sw1">
-                                <rect key="frame" x="8" y="628" width="398" height="21"/>
+                                <rect key="frame" x="8" y="743" width="398" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="youtube.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="260-jz-1p7">
-                                <rect key="frame" x="8" y="657" width="398" height="21"/>
+                                <rect key="frame" x="8" y="772" width="398" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -179,7 +176,6 @@
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="Ag0-hh-sw1" secondAttribute="trailing" constant="8" id="5lH-go-6uS"/>
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="WPX-I0-ihY" secondAttribute="trailing" id="63r-QR-1bL"/>
                             <constraint firstItem="hG5-YO-SAS" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="7zh-Fc-GGz"/>
-                            <constraint firstItem="hG5-YO-SAS" firstAttribute="top" secondItem="gtB-1W-M3j" secondAttribute="bottom" constant="50" id="Ilk-Hq-kfr"/>
                             <constraint firstItem="gtB-1W-M3j" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="KCo-Mr-p6Y"/>
                             <constraint firstItem="WPX-I0-ihY" firstAttribute="top" secondItem="f2T-La-p7c" secondAttribute="top" id="SIz-SU-ahh"/>
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="260-jz-1p7" secondAttribute="trailing" constant="8" id="T4a-hB-uOl"/>
@@ -187,6 +183,8 @@
                             <constraint firstItem="Ag0-hh-sw1" firstAttribute="top" secondItem="hG5-YO-SAS" secondAttribute="bottom" constant="8" id="l37-Gn-oIC"/>
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="gtB-1W-M3j" secondAttribute="trailing" constant="8" id="sOb-Ml-8EO"/>
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="hG5-YO-SAS" secondAttribute="trailing" constant="8" id="vJp-ae-BqR"/>
+                            <constraint firstItem="f2T-La-p7c" firstAttribute="bottom" secondItem="260-jz-1p7" secondAttribute="bottom" constant="20" id="xaa-Fh-0sb"/>
+                            <constraint firstItem="hG5-YO-SAS" firstAttribute="top" secondItem="gtB-1W-M3j" secondAttribute="bottom" constant="20" id="ycs-7s-9KX"/>
                             <constraint firstItem="gtB-1W-M3j" firstAttribute="top" secondItem="WPX-I0-ihY" secondAttribute="bottom" constant="8" id="zCy-uD-aBm"/>
                             <constraint firstItem="260-jz-1p7" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="zYc-ln-DZB"/>
                         </constraints>
@@ -209,6 +207,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="m81-A2-8yS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ewf-vE-qy6">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

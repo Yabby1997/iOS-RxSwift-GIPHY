@@ -16,7 +16,6 @@ class APIService {
             apiURL = URL(string: searchAPI + API_KEY + searchQuery + keyword + settings)
         } else {
             apiURL = URL(string: randomAPI + API_KEY + settings)
-            print(randomAPI + API_KEY + settings)
         }
         guard let apiURL = apiURL else { return }
         

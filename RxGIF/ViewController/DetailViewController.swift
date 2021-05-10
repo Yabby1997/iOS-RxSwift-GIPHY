@@ -34,10 +34,15 @@ class DetailViewController: UIViewController {
     
     func configureUI() {
         guard let gif = self.gif else { return }
+        self.gifImageView.backgroundColor = .systemGray5
         Nuke.loadImage(with: gif.originalURL, options: nukeOptions, into: self.gifImageView)
         self.titleLabel.text = gif.title
         self.trendingLabel.text = gif.trendingDate
         self.sourceLabel.text = gif.source
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleContentMode))
+        self.gifImageView.addGestureRecognizer(tapGesture)
+        self.gifImageView.isUserInteractionEnabled = true
     }
     
     func showBanner(success: Bool) {
@@ -74,5 +79,11 @@ class DetailViewController: UIViewController {
                 self.showBanner(success: true)
             }
         }
+    }
+    
+    // MARK: - Actions
+    
+    @objc func toggleContentMode() {
+        self.gifImageView.contentMode = self.gifImageView.contentMode == .scaleAspectFit ? .scaleAspectFill : .scaleAspectFit
     }
 }
