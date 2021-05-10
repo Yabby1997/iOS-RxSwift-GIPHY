@@ -44,6 +44,9 @@ class SearchViewController: UIViewController {
             .filter({ (text) -> Bool in
                 text != ""
             })
+            .map({ text in
+                text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            })
             .subscribe(onNext: { text in
                 self.searchBar.endEditing(true)
                 self.viewModel.searchGif(keyword: text)

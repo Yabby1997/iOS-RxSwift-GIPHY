@@ -10,8 +10,8 @@ import RxSwift
 
 class APIService {
     static func fetchGif(keyword: String, onComplete: @escaping (Result<Data, Error>) -> Void) {
-        let apiURL = api + API_KEY + query + keyword + settings
-        URLSession.shared.dataTask(with: URL(string: apiURL)!) { data, res, err in
+        guard let apiURL = URL(string: api + API_KEY + query + keyword + settings) else { return }
+        URLSession.shared.dataTask(with: apiURL) { data, res, err in
             if let err = err {
                 onComplete(.failure(err))
                 return
