@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D5556472648E012002EA16B /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5556462648E012002EA16B /* EmptyViewController.swift */; };
+		1D55564F2648EB02002EA16B /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55564E2648EB02002EA16B /* EmptyResultView.swift */; };
 		1DFD49882642E0580009D052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49872642E0580009D052 /* AppDelegate.swift */; };
 		1DFD498A2642E0580009D052 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49892642E0580009D052 /* SceneDelegate.swift */; };
 		1DFD498C2642E0580009D052 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD498B2642E0580009D052 /* SearchViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D5556462648E012002EA16B /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		1D55564E2648EB02002EA16B /* EmptyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultView.swift; sourceTree = "<group>"; };
 		1DFD49842642E0580009D052 /* RxGIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxGIF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DFD49872642E0580009D052 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DFD49892642E0580009D052 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			children = (
 				1DFD49C12642F0B10009D052 /* DetailViewController.swift */,
 				1DFD498B2642E0580009D052 /* SearchViewController.swift */,
+				1D5556462648E012002EA16B /* EmptyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				1DFD49A42642E1B10009D052 /* SearchCollectionViewCell.swift */,
+				1D55564E2648EB02002EA16B /* EmptyResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,7 +279,9 @@
 			files = (
 				1DFD49DE26430B0D0009D052 /* Constants.swift in Sources */,
 				1DFD498C2642E0580009D052 /* SearchViewController.swift in Sources */,
+				1D5556472648E012002EA16B /* EmptyViewController.swift in Sources */,
 				1DFD49C92642F8170009D052 /* SearchViewModel.swift in Sources */,
+				1D55564F2648EB02002EA16B /* EmptyResultView.swift in Sources */,
 				1DFD49882642E0580009D052 /* AppDelegate.swift in Sources */,
 				1DFD49C22642F0B10009D052 /* DetailViewController.swift in Sources */,
 				1DFD498A2642E0580009D052 /* SceneDelegate.swift in Sources */,

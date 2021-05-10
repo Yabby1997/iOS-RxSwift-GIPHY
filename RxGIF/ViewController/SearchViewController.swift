@@ -30,6 +30,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.resultCollectionView.backgroundView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
+        
         ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
         
         resultCollectionView.rx.setDelegate(self)
@@ -55,6 +57,10 @@ class SearchViewController: UIViewController {
         
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)
+            .filter({ gifs in
+                self.resultCollectionView.backgroundView?.isHidden = gifs.count > 0 ? true : false
+                return true
+            })
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
                 
                 cell.backgroundColor = .systemGray5
