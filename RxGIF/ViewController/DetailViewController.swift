@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
 
     // MARK: - Properties
     var gif: Gif?
+    var banner: NotificationBanner?
     
     // MARK: - IBOutlets
     
