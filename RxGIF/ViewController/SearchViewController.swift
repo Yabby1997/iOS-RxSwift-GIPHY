@@ -59,6 +59,7 @@ class SearchViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .filter({ gifs in
                 self.resultCollectionView.backgroundView?.isHidden = gifs.count > 0 ? true : false
+                self.resultCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: false)
                 return true
             })
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
