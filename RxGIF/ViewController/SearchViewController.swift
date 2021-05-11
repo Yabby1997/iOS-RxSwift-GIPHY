@@ -19,39 +19,30 @@ class SearchViewController: UIViewController {
     let cellIdentifier: String = "SearchViewCell"
     var viewModel: SearchViewModel = SearchViewModel()
     var disposeBag: DisposeBag = DisposeBag()
+    let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.resultCollectionView.backgroundView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
-        
-        ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
-        
-        resultCollectionView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        self.searchBar.delegate = self
-        
-        self.resultCollectionView.keyboardDismissMode = .onDrag
-        
-        self.searchBar.rx.text.orEmpty
+        self.configureUI()
+    
+        self.searchController.searchBar.rx.text.orEmpty
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .filter({ (text) -> Bool in
                 text != ""
             })
-            .map({ text in
-                text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            })
             .subscribe(onNext: { text in
-                self.searchBar.endEditing(true)
-                self.viewModel.searchGif(keyword: text)
+                let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                self.searchController.searchBar.endEditing(true)
+                self.searchController.isActive = false
+                self.navigationItem.title = text
+                self.viewModel.searchGif(keyword: query)
             })
             .disposed(by: disposeBag)
         
@@ -73,9 +64,27 @@ class SearchViewController: UIViewController {
 
     // MARK: - Helpers
     
+    func configureUI() {
+        ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
+        
+        self.searchController.searchBar.placeholder = "검색어를 입력해주세요."
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.automaticallyShowsScopeBar = true
+        
+        self.navigationItem.searchController = searchController
+        self.resultCollectionView.backgroundView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
+        
+        resultCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        self.searchController.searchBar.delegate = self
+        self.resultCollectionView.keyboardDismissMode = .onDrag
+    }
     
     // MARK: - IBActions
-
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        self.searchController.isActive = true
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -110,6 +119,6 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.endEditing(true)
+        self.searchController.searchBar.endEditing(true)
     }
 }
