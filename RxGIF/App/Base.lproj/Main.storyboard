@@ -74,6 +74,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="resultCollectionView" destination="bfN-X9-vsT" id="ag7-pv-bi6"/>
+                        <outlet property="searchButton" destination="d0l-v5-dBj" id="o4e-jO-s82"/>
                         <segue destination="A38-wN-Hx5" kind="push" identifier="segueToDetail" id="FyA-iy-0jv"/>
                     </connections>
                 </viewController>

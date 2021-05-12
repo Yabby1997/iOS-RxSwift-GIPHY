@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
     // MARK: - Lifecycles
@@ -39,6 +40,7 @@ class SearchViewController: UIViewController {
             })
             .subscribe(onNext: { text in
                 let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                self.resultCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: false)
                 self.searchController.searchBar.endEditing(true)
                 self.searchController.isActive = false
                 self.navigationItem.title = text
@@ -50,7 +52,6 @@ class SearchViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .filter({ gifs in
                 self.resultCollectionView.backgroundView?.isHidden = gifs.count > 0 ? true : false
-                self.resultCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: false)
                 return true
             })
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
@@ -69,15 +70,18 @@ class SearchViewController: UIViewController {
         
         self.searchController.searchBar.placeholder = "검색어를 입력해주세요."
         self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.automaticallyShowsScopeBar = true
         
         self.navigationItem.searchController = searchController
         self.resultCollectionView.backgroundView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
         
-        resultCollectionView.rx.setDelegate(self)
+        self.resultCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         self.searchController.searchBar.delegate = self
         self.resultCollectionView.keyboardDismissMode = .onDrag
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     // MARK: - IBActions
@@ -120,5 +124,11 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchController.searchBar.endEditing(true)
+    }
+}
+
+extension SearchViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.navigationItem.hidesSearchBarWhenScrolling = true
     }
 }
