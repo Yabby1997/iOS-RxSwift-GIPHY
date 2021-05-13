@@ -8,7 +8,7 @@
 import UIKit
 import FLAnimatedImage
 
-class SearchCollectionViewCell: UICollectionViewCell {
+class GifCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet weak var thumbnailImageView: FLAnimatedImageView!

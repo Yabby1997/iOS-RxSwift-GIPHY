@@ -54,7 +54,7 @@ class SearchViewController: UIViewController {
                 self.resultCollectionView.backgroundView?.isHidden = gifs.count > 0 ? true : false
                 return true
             })
-            .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
+            .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
                 
                 cell.backgroundColor = .systemGray5
                 Nuke.loadImage(with: item.thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)

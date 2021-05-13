@@ -9,6 +9,7 @@ import UIKit
 import FLAnimatedImage
 import Nuke
 import NotificationBannerSwift
+import SnapKit
 
 class DetailViewController: UIViewController {
 
@@ -34,7 +35,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
@@ -56,6 +57,11 @@ class DetailViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleContentMode))
         self.gifImageView.addGestureRecognizer(tapGesture)
         self.gifImageView.isUserInteractionEnabled = true
+        
+        self.gifImageView.insetsLayoutMarginsFromSafeArea = false
+        self.gifImageView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaInsets.top).offset(0)
+        }
     }
     
     func showBanner(success: Bool) {
