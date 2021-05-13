@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     // MARK: - Properties
     var gif: Gif?
     var banner: NotificationBanner?
+    var initialInteractivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
     
     // MARK: - IBOutlets
     
@@ -27,14 +28,26 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initialInteractivePopGestureRecognizerDelegate = self.navigationController?.interactivePopGestureRecognizer?.delegate
         configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self.initialInteractivePopGestureRecognizerDelegate
     }
     
     // MARK: - Helpers
     
     func configureUI() {
         guard let gif = self.gif else { return }
-        self.gifImageView.backgroundColor = .systemGray5
         Nuke.loadImage(with: gif.originalURL, options: nukeOptions, into: self.gifImageView)
         self.titleLabel.text = gif.title
         self.trendingLabel.text = gif.trendingDate

@@ -43,7 +43,6 @@ class RandomViewController: UIViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        self.gifImageView.backgroundColor = .systemGray5
         self.gifImageView.contentMode = .scaleAspectFit
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.gifImageViewTapped))
