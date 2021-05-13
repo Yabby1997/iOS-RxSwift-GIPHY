@@ -80,9 +80,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159" y="896"/>
+            <point key="canvasLocation" x="587" y="896"/>
         </scene>
-        <!--Item-->
+        <!--Random-->
         <scene sceneID="YzI-Hm-jzP">
             <objects>
                 <viewController id="UgE-LB-Ode" customClass="RandomViewController" customModule="RxGIF" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,7 +103,7 @@
                             <constraint firstItem="bvK-e9-EqN" firstAttribute="bottom" secondItem="h0H-42-37E" secondAttribute="bottom" id="aAL-fk-pfX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Fim-8b-J87"/>
+                    <tabBarItem key="tabBarItem" title="Random" image="questionmark" catalog="system" id="Fim-8b-J87"/>
                     <connections>
                         <outlet property="gifImageView" destination="bvK-e9-EqN" id="Tpf-8S-2YU"/>
                     </connections>
@@ -112,11 +112,11 @@
             </objects>
             <point key="canvasLocation" x="1336" y="138"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="t5c-Nc-ZE9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eg5-2G-SNv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fAS-Sd-DOB"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="fAS-Sd-DOB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="A9G-zD-39W">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -129,7 +129,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ijj-ob-XoF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-158" y="138"/>
+            <point key="canvasLocation" x="587" y="138"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Aol-0x-pBR">
@@ -210,19 +210,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemIndigoColor"/>
                     </tabBar>
                     <connections>
+                        <segue destination="C4b-hD-U4t" kind="relationship" relationship="viewControllers" id="ROf-Oa-GeZ"/>
                         <segue destination="Eg5-2G-SNv" kind="relationship" relationship="viewControllers" id="nND-lf-ZEZ"/>
                         <segue destination="UgE-LB-Ode" kind="relationship" relationship="viewControllers" id="ftt-ZV-mG2"/>
                         <segue destination="ijz-dk-uXL" kind="relationship" relationship="viewControllers" id="wHD-0F-iwk"/>
-                        <segue destination="C4b-hD-U4t" kind="relationship" relationship="viewControllers" id="ROf-Oa-GeZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cq4-eb-f9R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945" y="-629"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="9Or-vB-ybr">
             <objects>
                 <viewController id="ijz-dk-uXL" sceneMemberID="viewController">
@@ -252,7 +253,7 @@
                             <constraint firstItem="cft-LO-Bum" firstAttribute="trailing" secondItem="lg9-zR-Syh" secondAttribute="trailing" id="ZJo-aa-WM5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Kva-Wx-ByH"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="Kva-Wx-ByH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8e-2f-vxQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -321,13 +322,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5y-Kd-s8w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593" y="896"/>
+            <point key="canvasLocation" x="-159" y="896"/>
         </scene>
-        <!--Item-->
+        <!--Trending-->
         <scene sceneID="Uh0-Ip-f56">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C4b-hD-U4t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZuM-pY-Ldp"/>
+                    <tabBarItem key="tabBarItem" title="Trending" image="crown" catalog="system" id="ZuM-pY-Ldp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="e1e-nv-Vye">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -340,18 +341,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Vx-MU-thL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593" y="138"/>
+            <point key="canvasLocation" x="-159" y="138"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FiO-If-jmI"/>
+        <segue reference="FyA-iy-0jv"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="crown" catalog="system" width="128" height="92"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="questionmark" catalog="system" width="96" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
