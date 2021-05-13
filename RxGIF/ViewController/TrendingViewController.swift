@@ -17,7 +17,7 @@ class TrendingViewController: UIViewController {
     // MARK: - Properties
     
     let cellIdentifier: String = "TrendingViewCell"
-    var viewModel: SearchViewModel = SearchViewModel()
+    var viewModel: TrendingViewModel = TrendingViewModel()
     var disposeBag: DisposeBag = DisposeBag()
     
     // MARK: - IBOutlets
@@ -29,9 +29,8 @@ class TrendingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
+        self.viewModel.fetchTrendingGif()
         self.configureUI()
-        
-        self.viewModel.searchGif(keyword: "Spongebob")
         
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)

@@ -1,8 +1,8 @@
 //
-//  SearchViewModel.swift
+//  TrendingViewModel.swift
 //  RxGIF
 //
-//  Created by Seunghun Yang on 2021/05/06.
+//  Created by Seunghun Yang on 2021/05/13.
 //
 
 import Foundation
@@ -11,12 +11,12 @@ import RxSwift
 import FLAnimatedImage
 import Nuke
 
-class SearchViewModel {
+class TrendingViewModel {
     lazy var gifObservable = BehaviorRelay<[Gif]>(value: [])
     
-    func searchGif(keyword: String) {
+    func fetchTrendingGif() {
         ImageCache.shared.removeAll()
-        _ = APIService.fetchGifRx(mode: .search, keyword: keyword)
+        _ = APIService.fetchGifRx(mode: .trending)
             .map { data -> GifResponseArray in
                 let object = try! JSONDecoder().decode(GifResponseArray.self, from: data)
                 return object

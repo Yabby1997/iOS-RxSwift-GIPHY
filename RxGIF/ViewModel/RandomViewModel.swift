@@ -12,7 +12,7 @@ class RandomViewModel {
     lazy var gifObservable = PublishSubject<Gif>()
     
     func getRandomGif() {
-        _ = APIService.fetchGifRx(keyword: nil)
+        _ = APIService.fetchGifRx(mode: .random)
             .map { data -> SingleGifResponse in
                 let object = try! JSONDecoder().decode(SingleGifResponse.self, from: data)
                 return object

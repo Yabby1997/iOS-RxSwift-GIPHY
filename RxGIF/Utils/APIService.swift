@@ -9,14 +9,25 @@ import Foundation
 import RxSwift
 
 class APIService {
-    static func fetchGif(keyword: String?, onComplete: @escaping (Result<Data, Error>) -> Void) {
+    enum fetchMode {
+        case search
+        case random
+        case trending
+    }
+    
+    static func fetchGif(mode: fetchMode, keyword: String? = nil, onComplete: @escaping (Result<Data, Error>) -> Void) {
         var apiURL: URL?
-        if keyword != nil {
+        
+        switch(mode) {
+        case .search:
             guard let keyword = keyword else { return }
             apiURL = URL(string: searchAPI + API_KEY + searchQuery + keyword + settings)
-        } else {
+        case .random:
             apiURL = URL(string: randomAPI + API_KEY + settings)
+        case .trending:
+            apiURL = URL(string: trendingAPI + API_KEY + settings)
         }
+        
         guard let apiURL = apiURL else { return }
         
         URLSession.shared.dataTask(with: apiURL) { data, res, err in
@@ -35,9 +46,9 @@ class APIService {
         }.resume()
     }
     
-    static func fetchGifRx(keyword: String?) -> Observable<Data> {
+    static func fetchGifRx(mode: fetchMode, keyword: String? = nil) -> Observable<Data> {
         return Observable.create() { emitter in
-            fetchGif(keyword: keyword) { result in
+            fetchGif(mode: mode, keyword: keyword) { result in
                 switch result {
                 case .success(let data) :
                     emitter.onNext(data)
