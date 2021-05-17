@@ -226,7 +226,7 @@
         <!--Settings-->
         <scene sceneID="9Or-vB-ybr">
             <objects>
-                <viewController id="ijz-dk-uXL" sceneMemberID="viewController">
+                <viewController id="ijz-dk-uXL" customClass="SettingsViewController" customModule="RxGIF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TS3-Fi-NzU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,6 +234,37 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lg9-zR-Syh">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="4F7-fa-Mbw" customClass="SettingsTableViewCell" customModule="RxGIF" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4F7-fa-Mbw" id="36F-38-UJy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAd-Jf-uLB">
+                                                    <rect key="frame" x="355" y="6.5" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24W-cU-U9a">
+                                                    <rect key="frame" x="10" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="24W-cU-U9a" firstAttribute="centerY" secondItem="36F-38-UJy" secondAttribute="centerY" id="J20-xP-DBq"/>
+                                                <constraint firstItem="24W-cU-U9a" firstAttribute="leading" secondItem="36F-38-UJy" secondAttribute="leading" constant="10" id="Tv0-Q4-49e"/>
+                                                <constraint firstAttribute="trailing" secondItem="gAd-Jf-uLB" secondAttribute="trailing" constant="10" id="X77-gW-m9x"/>
+                                                <constraint firstItem="gAd-Jf-uLB" firstAttribute="centerY" secondItem="36F-38-UJy" secondAttribute="centerY" id="imI-bC-6sL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="24W-cU-U9a" id="Xyl-0d-qcL"/>
+                                            <outlet property="toggleSwitch" destination="gAd-Jf-uLB" id="wgJ-Fv-tSE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="ek9-iD-kgq">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -254,6 +285,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="Kva-Wx-ByH"/>
+                    <connections>
+                        <outlet property="settingsTableView" destination="lg9-zR-Syh" id="Dl4-Uz-0DD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8e-2f-vxQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -345,7 +379,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FyA-iy-0jv"/>
+        <segue reference="FiO-If-jmI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="crown" catalog="system" width="128" height="92"/>

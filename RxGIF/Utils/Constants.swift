@@ -14,7 +14,7 @@ let trendingAPI = "https://api.giphy.com/v1/gifs/trending?api_key="
 let searchQuery = "&q="
 let settings = "&limit=100&offset=0&rating=g&lang=en"
 
-let API_KEY = ""
+let API_KEY = "7FckdoA95APjXjzIPCRm9he4wpaa6DFC"
 
 let nukeOptions = ImageLoadingOptions(
     transition: .fadeIn(duration: 0.45)
