@@ -57,7 +57,7 @@ class SearchViewController: UIViewController {
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
                 
                 cell.backgroundColor = .systemGray5
-                Nuke.loadImage(with: item.thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
+                Nuke.loadImage(with: item.smallThumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
                 cell.thumbnailImageView.contentMode = .scaleAspectFill
             }
             .disposed(by: disposeBag)

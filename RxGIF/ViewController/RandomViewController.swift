@@ -35,7 +35,7 @@ class RandomViewController: UIViewController {
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { gif in
-                Nuke.loadImage(with: gif.originalURL, options: nukeOptions, into: self.gifImageView)
+                Nuke.loadImage(with: gif.smallThumbnailURL, options: nukeOptions, into: self.gifImageView)
             })
             .disposed(by: disposeBag)
     }
