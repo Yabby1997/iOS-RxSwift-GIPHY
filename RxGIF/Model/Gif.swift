@@ -21,9 +21,9 @@ struct Gif {
         self.title = response.title
         self.source = response.source
         self.trendingDate = response.trendingDatetime
-        self.thumbnailURL = URL(string: response.getThumbnailURL())!
-        self.smallThumbnailURL = URL(string: response.getSmallThumbnailURL())!
-        self.originalURL = URL(string: response.getOriginalURL())!
+        self.thumbnailURL = response.gifSources.thumbnail.getURL()
+        self.smallThumbnailURL = response.gifSources.smallThumbnail.getURL()
+        self.originalURL = response.gifSources.original.getURL()
     }
 }
 
@@ -55,18 +55,6 @@ struct GifResponse: Decodable {
         case trendingDatetime = "trending_datetime"
         case gifSources = "images"
     }
-    
-    func getOriginalURL() -> String{
-        return gifSources.original.url
-    }
-    
-    func getThumbnailURL() -> String{
-        return gifSources.thumbnail.url
-    }
-    
-    func getSmallThumbnailURL() -> String {
-        return gifSources.smallThumbnail.url
-    }
 }
 
 struct GifURLs: Decodable {
@@ -81,5 +69,12 @@ struct GifURLs: Decodable {
 }
 
 struct sourceURL: Decodable {
-    var url: String
+    var url: String?
+    
+    func getURL() -> URL {
+        guard let url = self.url else {
+            return URL(string: errorGifURL)!
+        }
+        return URL(string: url)!
+    }
 }
