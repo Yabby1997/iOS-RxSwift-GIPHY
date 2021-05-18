@@ -142,7 +142,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-I0-ihY" customClass="FLAnimatedImageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-I0-ihY" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="0.0" y="140" width="414" height="507"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtB-1W-M3j">
@@ -180,7 +180,6 @@
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="WPX-I0-ihY" secondAttribute="trailing" id="63r-QR-1bL"/>
                             <constraint firstItem="hG5-YO-SAS" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="7zh-Fc-GGz"/>
                             <constraint firstItem="gtB-1W-M3j" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="KCo-Mr-p6Y"/>
-                            <constraint firstItem="WPX-I0-ihY" firstAttribute="top" secondItem="f2T-La-p7c" secondAttribute="top" id="SUA-eE-UFV"/>
                             <constraint firstItem="f2T-La-p7c" firstAttribute="trailing" secondItem="260-jz-1p7" secondAttribute="trailing" constant="8" id="T4a-hB-uOl"/>
                             <constraint firstItem="Ag0-hh-sw1" firstAttribute="leading" secondItem="f2T-La-p7c" secondAttribute="leading" constant="8" id="aCm-Oy-3me"/>
                             <constraint firstItem="Ag0-hh-sw1" firstAttribute="top" secondItem="hG5-YO-SAS" secondAttribute="bottom" constant="8" id="l37-Gn-oIC"/>
@@ -259,6 +258,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="gAd-Jf-uLB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="24W-cU-U9a" secondAttribute="trailing" constant="8" symbolic="YES" id="IU2-dn-iHb"/>
                                                 <constraint firstItem="24W-cU-U9a" firstAttribute="centerY" secondItem="36F-38-UJy" secondAttribute="centerY" id="J20-xP-DBq"/>
                                                 <constraint firstItem="24W-cU-U9a" firstAttribute="leading" secondItem="36F-38-UJy" secondAttribute="leading" constant="10" id="Tv0-Q4-49e"/>
                                                 <constraint firstAttribute="trailing" secondItem="gAd-Jf-uLB" secondAttribute="trailing" constant="10" id="X77-gW-m9x"/>

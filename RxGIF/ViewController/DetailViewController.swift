@@ -66,7 +66,7 @@ class DetailViewController: UIViewController {
         
         self.gifImageView.insetsLayoutMarginsFromSafeArea = false
         self.gifImageView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaInsets.top).offset(0)
+            $0.top.equalTo(self.view.safeAreaInsets.top)
         }
     }
     
