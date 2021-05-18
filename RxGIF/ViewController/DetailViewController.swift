@@ -10,6 +10,7 @@ import FLAnimatedImage
 import Nuke
 import NotificationBannerSwift
 import SnapKit
+import Hero
 
 class DetailViewController: UIViewController {
 
@@ -50,6 +51,9 @@ class DetailViewController: UIViewController {
     func configureUI() {
         guard let gif = self.gif else { return }
         Nuke.loadImage(with: gif.originalURL, options: nukeOptions, into: self.gifImageView)
+        
+        self.gifImageView.heroID = gif.id
+        
         self.titleLabel.text = gif.title
         self.trendingLabel.text = gif.trendingDate
         self.sourceLabel.text = gif.source
@@ -57,6 +61,8 @@ class DetailViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleContentMode))
         self.gifImageView.addGestureRecognizer(tapGesture)
         self.gifImageView.isUserInteractionEnabled = true
+        
+        self.gifImageView.contentMode = .scaleAspectFill
         
         self.gifImageView.insetsLayoutMarginsFromSafeArea = false
         self.gifImageView.snp.makeConstraints {

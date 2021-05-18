@@ -8,14 +8,16 @@
 import Foundation
 
 struct Gif {
-    let title: String           // title
-    let source: String          // source_tld
-    let trendingDate: String    // trending_datetime
-    let thumbnailURL: URL    // images/downsized_small
+    let id: String
+    let title: String
+    let source: String
+    let trendingDate: String
+    let thumbnailURL: URL
     let smallThumbnailURL: URL
-    let originalURL: URL     // images/original
+    let originalURL: URL
     
     init(from response: GifResponse) {
+        self.id = response.id
         self.title = response.title
         self.source = response.source
         self.trendingDate = response.trendingDatetime
@@ -40,12 +42,14 @@ struct SingleGifResponse: Decodable {
 }
 
 struct GifResponse: Decodable {
+    var id: String
     var title: String
     var source: String
     var trendingDatetime: String
     var gifSources: GifURLs
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case title = "title"
         case source = "source_tld"
         case trendingDatetime = "trending_datetime"

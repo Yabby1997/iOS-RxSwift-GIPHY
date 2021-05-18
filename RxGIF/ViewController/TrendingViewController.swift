@@ -39,6 +39,7 @@ class TrendingViewController: UIViewController {
                 cell.backgroundColor = .systemGray5
                 Nuke.loadImage(with: item.smallThumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
                 cell.thumbnailImageView.contentMode = .scaleAspectFill
+                cell.thumbnailImageView.heroID = item.id
             }
             .disposed(by: disposeBag)
     }
@@ -46,6 +47,8 @@ class TrendingViewController: UIViewController {
     // MARK: - Helpers
     
     func configureUI() {
+        self.navigationController?.isHeroEnabled = true
+        
         self.resultCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }

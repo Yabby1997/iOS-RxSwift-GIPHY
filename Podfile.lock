@@ -1,5 +1,6 @@
 PODS:
   - FLAnimatedImage (1.0.16)
+  - Hero (1.6.1)
   - MarqueeLabel (4.0.5)
   - NotificationBannerSwift (3.0.6):
     - MarqueeLabel (~> 4.0.5)
@@ -18,6 +19,7 @@ PODS:
 
 DEPENDENCIES:
   - FLAnimatedImage
+  - Hero
   - NotificationBannerSwift (~> 3.0.0)
   - Nuke
   - Nuke-FLAnimatedImage-Plugin
@@ -28,6 +30,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FLAnimatedImage
+    - Hero
     - MarqueeLabel
     - NotificationBannerSwift
     - Nuke
@@ -39,6 +42,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
@@ -48,6 +52,6 @@ SPEC CHECKSUMS:
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 5e7bc27f66ea4c116006d7c2bb4c0ddbb26148cd
+PODFILE CHECKSUM: b2f07571f301ebcbe6f93cf4330ffbda9b0cdcea
 
 COCOAPODS: 1.10.1

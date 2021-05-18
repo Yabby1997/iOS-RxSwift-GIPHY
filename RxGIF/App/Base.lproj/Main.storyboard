@@ -72,6 +72,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="resultCollectionView" destination="bfN-X9-vsT" id="ag7-pv-bi6"/>
                         <outlet property="searchButton" destination="d0l-v5-dBj" id="o4e-jO-s82"/>
@@ -190,6 +193,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7vE-gE-WMS"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="gifImageView" destination="WPX-I0-ihY" id="ceX-HI-rSb"/>
                         <outlet property="sourceLabel" destination="260-jz-1p7" id="lMa-0y-EaM"/>
@@ -349,6 +355,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trending" id="do6-ms-F28"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="resultCollectionView" destination="be5-wZ-kdj" id="bYB-BA-j6L"/>
                         <segue destination="A38-wN-Hx5" kind="show" id="FiO-If-jmI"/>

@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import Nuke
 import NukeFLAnimatedImagePlugin
+import Hero
 
 class SearchViewController: UIViewController {
 
@@ -59,6 +60,7 @@ class SearchViewController: UIViewController {
                 cell.backgroundColor = .systemGray5
                 Nuke.loadImage(with: item.smallThumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
                 cell.thumbnailImageView.contentMode = .scaleAspectFill
+                cell.thumbnailImageView.heroID = item.id
             }
             .disposed(by: disposeBag)
     }
@@ -67,6 +69,8 @@ class SearchViewController: UIViewController {
     
     func configureUI() {
         ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
+        
+        self.navigationController?.isHeroEnabled = true
         
         self.searchController.searchBar.placeholder = "검색어를 입력해주세요."
         self.searchController.obscuresBackgroundDuringPresentation = false
