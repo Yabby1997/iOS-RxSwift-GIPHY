@@ -21,6 +21,7 @@ class SearchViewController: UIViewController {
     var viewModel: SearchViewModel = SearchViewModel()
     var disposeBag: DisposeBag = DisposeBag()
     let searchController = UISearchController(searchResultsController: nil)
+    let refreshControl = UIRefreshControl()
     
     // MARK: - IBOutlets
     
@@ -86,6 +87,9 @@ class SearchViewController: UIViewController {
             .disposed(by: disposeBag)
         self.searchController.searchBar.delegate = self
         self.resultCollectionView.keyboardDismissMode = .onDrag
+        
+        self.refreshControl.addTarget(self, action: #selector(self.refreshResults), for: .valueChanged)
+        self.resultCollectionView.refreshControl = self.refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +100,11 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         self.searchController.isActive = true
+    }
+    
+    @objc func refreshResults() {
+        self.viewModel.refreshGif()
+        self.refreshControl.endRefreshing()
     }
 }
 

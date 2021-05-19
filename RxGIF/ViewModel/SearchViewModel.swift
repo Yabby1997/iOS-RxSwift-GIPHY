@@ -13,8 +13,10 @@ import Nuke
 
 class SearchViewModel {
     lazy var gifObservable = BehaviorRelay<[Gif]>(value: [])
+    var recentKeyword: String?
     
     func searchGif(keyword: String) {
+        self.recentKeyword = keyword
         ImageCache.shared.removeAll()
         _ = APIService.fetchGifRx(mode: .search, keyword: keyword)
             .map { data -> GifResponseArray in
@@ -32,5 +34,10 @@ class SearchViewModel {
             .subscribe(onNext: {
                 self.gifObservable.accept($0)
             })
+    }
+    
+    func refreshGif() {
+        guard let keyword = recentKeyword else { return }
+        self.searchGif(keyword: keyword)
     }
 }

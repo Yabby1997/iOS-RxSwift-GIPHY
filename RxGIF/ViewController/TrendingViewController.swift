@@ -19,6 +19,7 @@ class TrendingViewController: UIViewController {
     let cellIdentifier: String = "TrendingViewCell"
     var viewModel: TrendingViewModel = TrendingViewModel()
     var disposeBag: DisposeBag = DisposeBag()
+    let refreshControl = UIRefreshControl()
     
     // MARK: - IBOutlets
     
@@ -55,6 +56,16 @@ class TrendingViewController: UIViewController {
         
         self.resultCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        self.refreshControl.addTarget(self, action: #selector(self.refreshResults), for: .valueChanged)
+        self.resultCollectionView.refreshControl = self.refreshControl
+    }
+    
+    // MARK: - IBActions
+    
+    @objc func refreshResults() {
+        self.viewModel.fetchTrendingGif()
+        self.refreshControl.endRefreshing()
     }
 }
 
