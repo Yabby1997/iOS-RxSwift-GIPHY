@@ -58,7 +58,11 @@ class SearchViewController: UIViewController {
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
                 
                 cell.backgroundColor = .systemGray5
-                Nuke.loadImage(with: item.smallThumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
+                
+                let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
+                let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
+                
+                Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
                 cell.thumbnailImageView.contentMode = .scaleAspectFill
                 cell.thumbnailImageView.heroID = item.id
             }

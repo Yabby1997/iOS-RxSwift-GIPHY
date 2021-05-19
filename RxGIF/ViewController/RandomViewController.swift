@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Nuke
 import NukeFLAnimatedImagePlugin
+import SnapKit
 
 class RandomViewController: UIViewController {
 
@@ -18,6 +19,9 @@ class RandomViewController: UIViewController {
     
     var viewModel: RandomViewModel = RandomViewModel()
     let disposeBag = DisposeBag()
+    
+    var notchIgnoredTopConstraint: Constraint?
+    var topConstraint: Constraint?
     
     // MARK: - IBOutlets
     
@@ -35,9 +39,22 @@ class RandomViewController: UIViewController {
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { gif in
-                Nuke.loadImage(with: gif.smallThumbnailURL, options: nukeOptions, into: self.gifImageView)
+                Nuke.loadImage(with: gif.originalURL, options: nukeOptions, into: self.gifImageView)
             })
             .disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let ignoreNotchOption = UserDefaults.standard.bool(forKey: "HideNotch")
+        if(ignoreNotchOption) {
+            self.topConstraint?.deactivate()
+            self.notchIgnoredTopConstraint?.activate()
+        } else {
+            self.notchIgnoredTopConstraint?.deactivate()
+            self.topConstraint?.activate()
+        }
     }
     
     // MARK: - Helpers
@@ -51,6 +68,14 @@ class RandomViewController: UIViewController {
         self.gifImageView.addGestureRecognizer(tapGesture)
         self.gifImageView.addGestureRecognizer(swipeGesture)
         self.gifImageView.isUserInteractionEnabled = true
+        
+        self.gifImageView.snp.makeConstraints {
+            self.notchIgnoredTopConstraint = $0.top.equalTo(self.view.snp.top).constraint
+        }
+        self.notchIgnoredTopConstraint?.deactivate()
+        self.gifImageView.snp.makeConstraints {
+            self.topConstraint = $0.top.equalTo(UIApplication.shared.windows[0].safeAreaInsets.top).constraint
+        }
     }
     
     // MARK: - Actions

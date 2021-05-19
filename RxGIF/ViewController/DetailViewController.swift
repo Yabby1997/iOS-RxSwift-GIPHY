@@ -19,6 +19,9 @@ class DetailViewController: UIViewController {
     var banner: NotificationBanner?
     var initialInteractivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
     
+    var notchIgnoredTopConstraint: Constraint?
+    var topConstraint: Constraint?
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var gifImageView: FLAnimatedImageView!
@@ -38,6 +41,15 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        
+        let ignoreNotchOption = UserDefaults.standard.bool(forKey: "HideNotch")
+        if(ignoreNotchOption) {
+            topConstraint?.deactivate()
+            notchIgnoredTopConstraint?.activate()
+        } else {
+            notchIgnoredTopConstraint?.deactivate()
+            topConstraint?.activate()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,8 +77,14 @@ class DetailViewController: UIViewController {
         self.gifImageView.contentMode = .scaleAspectFill
         
         self.gifImageView.insetsLayoutMarginsFromSafeArea = false
+        
         self.gifImageView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaInsets.top)
+            self.notchIgnoredTopConstraint = $0.top.equalTo(self.view.snp.top).constraint
+        }
+        self.notchIgnoredTopConstraint?.deactivate()
+        
+        self.gifImageView.snp.makeConstraints {
+            self.topConstraint = $0.top.equalTo(self.view.snp.top).offset(UIApplication.shared.windows[0].safeAreaInsets.top).constraint
         }
     }
     
