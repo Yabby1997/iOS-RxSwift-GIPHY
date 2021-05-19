@@ -348,7 +348,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="30" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="OEu-xU-DK2">
                                                     <rect key="frame" x="18" y="73" width="378" height="31"/>
                                                     <connections>
-                                                        <action selector="displayImageCountSliderChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="JRG-aP-AqA"/>
+                                                        <action selector="displayImageCountSliderValueChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="xo5-os-Uyf"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -385,7 +385,7 @@
                                                         <segment title="r"/>
                                                     </segments>
                                                     <connections>
-                                                        <action selector="imageRatingSegmentControllChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="dXv-uj-zVo"/>
+                                                        <action selector="imageRatingSegmentControllValueChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="WeK-SX-4PV"/>
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
@@ -467,7 +467,7 @@
                     <connections>
                         <outlet property="currentDisplayImageCountLabel" destination="9eT-Wa-GSe" id="IfW-NS-iix"/>
                         <outlet property="dataSaveSwitch" destination="lMc-bl-CP4" id="ra8-Ux-CnR"/>
-                        <outlet property="displayImageCountSlider" destination="OEu-xU-DK2" id="GVp-EY-sFL"/>
+                        <outlet property="displayImageCountSlider" destination="OEu-xU-DK2" id="bRJ-mL-t2K"/>
                         <outlet property="hideNotchSwitch" destination="FNl-lQ-Zk9" id="Gc3-rP-w5F"/>
                         <outlet property="imageRatingSegmentedController" destination="Wa9-9h-QPw" id="pCh-Gz-pmL"/>
                     </connections>

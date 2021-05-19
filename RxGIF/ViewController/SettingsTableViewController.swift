@@ -22,24 +22,64 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.initialSettings()
+        self.configureUI()
     }
     
     // MARK: - Helpers
     
-    // MARK: - IBActions
-    @IBAction func displayImageCountSliderChanged(_ sender: Any) {
-        print("표시 이미지 수 : \(self.displayImageCountSlider.value)")
+    func initialSettings() {
+        let defaults = UserDefaults.standard
+        
+        defaults.register(
+            defaults: [
+                "DisplayImageCount": 100,
+                "ImageRatingIndex": 0,
+                "HideNotch": true,
+                "DataSave": false
+            ]
+        )
     }
     
-    @IBAction func imageRatingSegmentControllChanged(_ sender: Any) {
-        print("이미지 등급 : \(self.imageRatingSegmentedController.selectedSegmentIndex)")
+    func configureUI() {
+        let defaults = UserDefaults.standard
+        
+        self.currentDisplayImageCountLabel.text = "\(defaults.integer(forKey: "DisplayImageCount"))장"
+        self.displayImageCountSlider.value = Float(defaults.integer(forKey: "DisplayImageCount"))
+        self.imageRatingSegmentedController.selectedSegmentIndex = defaults.integer(forKey: "ImageRatingIndex")
+        self.hideNotchSwitch.isOn = defaults.bool(forKey: "HideNotch")
+        self.dataSaveSwitch.isOn = defaults.bool(forKey: "DataSave")
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func displayImageCountSliderValueChanged(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let value = Int(self.displayImageCountSlider.value)
+        
+        self.currentDisplayImageCountLabel.text = "\(value)장"
+        defaults.setValue(value, forKey: "DisplayImageCount")
+    }
+    
+    @IBAction func imageRatingSegmentControllValueChanged(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let value = self.imageRatingSegmentedController.selectedSegmentIndex
+        
+        defaults.setValue(value, forKey: "ImageRatingIndex")
     }
     
     @IBAction func hideNotchSwitchToggled(_ sender: Any) {
-        print("노치 무시 : \(self.hideNotchSwitch.isOn)")
+        let defaults = UserDefaults.standard
+        let value = self.hideNotchSwitch.isOn
+        
+        defaults.setValue(value, forKey: "HideNotch")
     }
     
     @IBAction func dataSaveSwitchToggled(_ sender: Any) {
-        print("데이터 절약 : \(self.dataSaveSwitch.isOn)")
+        let defaults = UserDefaults.standard
+        let value = self.dataSaveSwitch.isOn
+        
+        defaults.setValue(value, forKey: "DataSave")
     }
 }
