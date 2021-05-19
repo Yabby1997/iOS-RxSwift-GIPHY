@@ -9,8 +9,11 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     // MARK: - Properties
-    let languages = ["English", "Korean", "Japanese", "French", "Germany"]
     
+    let languagePicker = UIPickerView()
+    lazy var toolBar = UIToolbar()
+    lazy var button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissPicker))
+        
     // MARK: - IBOutlets
     
     @IBOutlet weak var currentFetchLimitLabel: UILabel!
@@ -26,8 +29,8 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.initialSettings()
-        self.configureUI()
         self.configureLanguagePicker()
+        self.configureUI()
     }
     
     // MARK: - Helpers
@@ -48,26 +51,24 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func configureUI() {
-        let userDefaults = UserDefaults.standard
+        self.languageTextField.tintColor = .clear
         
+        let userDefaults = UserDefaults.standard
         self.currentFetchLimitLabel.text = "\(userDefaults.integer(forKey: "Limit"))장"
         self.fetchLimitSlider.value = Float(userDefaults.integer(forKey: "Limit"))
         self.imageRatingSegment.selectedSegmentIndex = userDefaults.integer(forKey: "RatingIndex")
         self.ignoreNotchSwitch.isOn = userDefaults.bool(forKey: "IgnoreNotch")
         self.dataSaveSwitch.isOn = userDefaults.bool(forKey: "DataSave")
         
-        self.languageTextField.tintColor = .clear
+        let language = userDefaults.string(forKey: "Language")
+        guard let language = language else { return }
+        self.languageTextField.text = Locale.current.localizedString(forLanguageCode: language) ?? language
+        languagePicker.selectRow(languages.firstIndex(of: language) ?? 0, inComponent: 0, animated: false)
     }
     
     func configureLanguagePicker() {
-        let languagePicker = UIPickerView()
-        let toolBar = UIToolbar()
-        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissPicker))
-        
         languagePicker.delegate = self
         languagePicker.dataSource = self
-        languageTextField.delegate = self
-        
         self.languageTextField.inputView = languagePicker
         
         toolBar.sizeToFit()
@@ -122,11 +123,14 @@ extension SettingsTableViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.languages.count
+        return languages.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.languages[row]
+        let value = languages[row]
+        let fullname = Locale.current.localizedString(forLanguageCode: value)
+        guard let fullname = fullname else { return value }
+        return fullname
     }
 }
 
@@ -135,17 +139,11 @@ extension SettingsTableViewController: UIPickerViewDataSource {
 extension SettingsTableViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let userDefaults = UserDefaults.standard
-        let value = self.languages[row]
-        
-        self.languageTextField.text = value
+        let value = languages[row]
         userDefaults.setValue(value, forKey: "Language")
-    }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension SettingsTableViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return false
+        
+        let fullname = Locale.current.localizedString(forLanguageCode: value)
+        guard let fullname = fullname else { return }
+        self.languageTextField.text = fullname
     }
 }
