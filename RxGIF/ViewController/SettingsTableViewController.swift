@@ -34,7 +34,7 @@ class SettingsTableViewController: UITableViewController {
         
         defaults.register(
             defaults: [
-                "DisplayImageCount": 100,
+                "DisplayImageCount": 30,
                 "ImageRatingIndex": 0,
                 "HideNotch": true,
                 "DataSave": false

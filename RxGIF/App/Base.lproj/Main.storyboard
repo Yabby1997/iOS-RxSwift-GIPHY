@@ -344,7 +344,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="30" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="OEu-xU-DK2">
+                                                <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="10" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="OEu-xU-DK2">
                                                     <rect key="frame" x="18" y="73" width="378" height="31"/>
                                                     <connections>
                                                         <action selector="displayImageCountSliderValueChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="xo5-os-Uyf"/>

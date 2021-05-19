@@ -21,14 +21,16 @@ class APIService {
         switch(mode) {
         case .search:
             guard let keyword = keyword else { return }
-            apiURL = URL(string: searchAPI + API_KEY + searchQuery + keyword + settings)
+            apiURL = URL(string: searchAPI + API_KEY + searchQuery + keyword + getSettings(offset: 0))
         case .random:
-            apiURL = URL(string: randomAPI + API_KEY + settings)
+            apiURL = URL(string: randomAPI + API_KEY + getSettings(offset: 0))
         case .trending:
-            apiURL = URL(string: trendingAPI + API_KEY + settings)
+            apiURL = URL(string: trendingAPI + API_KEY + getSettings(offset: 0))
         }
         
         guard let apiURL = apiURL else { return }
+        
+        print(apiURL)
         
         URLSession.shared.dataTask(with: apiURL) { data, res, err in
             if let err = err {
