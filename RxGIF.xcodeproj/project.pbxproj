@@ -13,6 +13,7 @@
 		1D6BD3A6265233E20072DA90 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BD3A5265233E20072DA90 /* SettingsTableViewController.swift */; };
 		1DA21E2226497D3A00E5C76A /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA21E2126497D3A00E5C76A /* RandomViewController.swift */; };
 		1DA21E2426497D7600E5C76A /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA21E2326497D7600E5C76A /* RandomViewModel.swift */; };
+		1DD01684265526F500E3E386 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD01683265526F500E3E386 /* CustomTextField.swift */; };
 		1DD7AB5E264D46CD0085CDB5 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD7AB5D264D46CD0085CDB5 /* TrendingViewModel.swift */; };
 		1DD7AB62264F30000085CDB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DD7AB61264F30000085CDB5 /* Assets.xcassets */; };
 		1DFD49882642E0580009D052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49872642E0580009D052 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		1D6BD3A5265233E20072DA90 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = RxGIF/ViewController/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DA21E2126497D3A00E5C76A /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
 		1DA21E2326497D7600E5C76A /* RandomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
+		1DD01683265526F500E3E386 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1DD7AB5D264D46CD0085CDB5 /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 		1DD7AB61264F30000085CDB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DFD49842642E0580009D052 /* RxGIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxGIF.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 			children = (
 				1DFD49D02642FA9F0009D052 /* APIService.swift */,
 				1DFD49DD26430B0D0009D052 /* Constants.swift */,
+				1DD01683265526F500E3E386 /* CustomTextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				1DFD49882642E0580009D052 /* AppDelegate.swift in Sources */,
 				1DD7AB5E264D46CD0085CDB5 /* TrendingViewModel.swift in Sources */,
 				1D319860264D4161000A53DB /* TrendingViewController.swift in Sources */,
+				1DD01684265526F500E3E386 /* CustomTextField.swift in Sources */,
 				1D6BD3A6265233E20072DA90 /* SettingsTableViewController.swift in Sources */,
 				1DFD49C22642F0B10009D052 /* DetailViewController.swift in Sources */,
 				1DFD498A2642E0580009D052 /* SceneDelegate.swift in Sources */,

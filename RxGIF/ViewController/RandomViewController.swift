@@ -47,7 +47,7 @@ class RandomViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let ignoreNotchOption = UserDefaults.standard.bool(forKey: "HideNotch")
+        let ignoreNotchOption = UserDefaults.standard.bool(forKey: "IgnoreNotch")
         if(ignoreNotchOption) {
             self.topConstraint?.deactivate()
             self.notchIgnoredTopConstraint?.activate()

@@ -42,7 +42,7 @@ class DetailViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         
-        let ignoreNotchOption = UserDefaults.standard.bool(forKey: "HideNotch")
+        let ignoreNotchOption = UserDefaults.standard.bool(forKey: "IgnoreNotch")
         if(ignoreNotchOption) {
             topConstraint?.deactivate()
             notchIgnoredTopConstraint?.activate()

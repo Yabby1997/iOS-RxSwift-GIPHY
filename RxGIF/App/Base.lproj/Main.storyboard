@@ -338,16 +338,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100장" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eT-Wa-GSe">
-                                                    <rect key="frame" x="185.5" y="42" width="43" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30장" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eT-Wa-GSe">
+                                                    <rect key="frame" x="185.5" y="42" width="43.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="10" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="OEu-xU-DK2">
-                                                    <rect key="frame" x="18" y="73" width="378" height="31"/>
+                                                    <rect key="frame" x="18" y="76" width="378" height="31"/>
                                                     <connections>
-                                                        <action selector="displayImageCountSliderValueChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="xo5-os-Uyf"/>
+                                                        <action selector="fetchLimitSliderValueChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="9bf-mO-qqg"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -356,6 +356,7 @@
                                                 <constraint firstItem="9eT-Wa-GSe" firstAttribute="top" secondItem="t9d-C3-yR5" secondAttribute="bottom" constant="10" id="3dy-iC-9YS"/>
                                                 <constraint firstItem="9eT-Wa-GSe" firstAttribute="centerX" secondItem="fEc-cs-N0F" secondAttribute="centerX" id="8he-Qr-QvX"/>
                                                 <constraint firstItem="OEu-xU-DK2" firstAttribute="leading" secondItem="fEc-cs-N0F" secondAttribute="leadingMargin" id="YYc-gl-8OP"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="t9d-C3-yR5" secondAttribute="trailing" constant="20" symbolic="YES" id="cRg-KF-Nfx"/>
                                                 <constraint firstItem="OEu-xU-DK2" firstAttribute="top" secondItem="9eT-Wa-GSe" secondAttribute="bottom" constant="10" id="d0m-Io-bxO"/>
                                                 <constraint firstItem="OEu-xU-DK2" firstAttribute="trailing" secondItem="fEc-cs-N0F" secondAttribute="trailingMargin" id="gEr-0v-Q8r"/>
                                                 <constraint firstItem="t9d-C3-yR5" firstAttribute="leading" secondItem="fEc-cs-N0F" secondAttribute="leadingMargin" id="kTb-rz-bpR"/>
@@ -384,7 +385,7 @@
                                                         <segment title="r"/>
                                                     </segments>
                                                     <connections>
-                                                        <action selector="imageRatingSegmentControllValueChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="WeK-SX-4PV"/>
+                                                        <action selector="imageRatingSegmentValueChanged:" destination="Hvg-wi-ejt" eventType="valueChanged" id="U3J-W3-IQz"/>
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
@@ -395,6 +396,39 @@
                                                 <constraint firstItem="Wa9-9h-QPw" firstAttribute="top" secondItem="iuj-75-b7S" secondAttribute="bottom" constant="10" id="fVg-4W-gVQ"/>
                                                 <constraint firstItem="iuj-75-b7S" firstAttribute="top" secondItem="en7-yl-t6R" secondAttribute="topMargin" id="oNA-5L-kDt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Wa9-9h-QPw" secondAttribute="trailing" id="qCq-gI-EVJ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iuj-75-b7S" secondAttribute="trailing" constant="20" symbolic="YES" id="uJn-Yb-8lg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="dYb-Yt-04W">
+                                        <rect key="frame" x="0.0" y="244.5" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dYb-Yt-04W" id="SUx-MC-1Ou">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 언어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Lr-x0-Pft">
+                                                    <rect key="frame" x="20" y="14.5" width="64" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="English" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z34-jF-Rm5" customClass="CustomTextField" customModule="RxGIF" customModuleProvider="target">
+                                                    <rect key="frame" x="224" y="8" width="170" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="z34-jF-Rm5" secondAttribute="height" multiplier="5:1" id="Cr9-Au-mkB"/>
+                                                    </constraints>
+                                                    <color key="textColor" systemColor="linkColor"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6Lr-x0-Pft" firstAttribute="leading" secondItem="SUx-MC-1Ou" secondAttribute="leadingMargin" id="AaL-xp-3vy"/>
+                                                <constraint firstItem="z34-jF-Rm5" firstAttribute="centerY" secondItem="SUx-MC-1Ou" secondAttribute="centerY" id="XBy-lc-TKn"/>
+                                                <constraint firstItem="z34-jF-Rm5" firstAttribute="trailing" secondItem="SUx-MC-1Ou" secondAttribute="trailingMargin" id="Xnx-UV-poV"/>
+                                                <constraint firstItem="z34-jF-Rm5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Lr-x0-Pft" secondAttribute="trailing" constant="8" symbolic="YES" id="gqF-h1-Q6v"/>
+                                                <constraint firstItem="6Lr-x0-Pft" firstAttribute="centerY" secondItem="SUx-MC-1Ou" secondAttribute="centerY" id="unD-Ya-jkn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -403,7 +437,7 @@
                             <tableViewSection headerTitle="이미지" id="nSP-Wh-nih">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="bXm-B2-zbZ">
-                                        <rect key="frame" x="0.0" y="293.50000034679067" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="343.50000034679067" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bXm-B2-zbZ" id="Oc5-56-86R">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -418,7 +452,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FNl-lQ-Zk9">
                                                     <rect key="frame" x="345" y="9.5" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="hideNotchSwitchToggled:" destination="Hvg-wi-ejt" eventType="valueChanged" id="fHw-Lu-2oG"/>
+                                                        <action selector="ignoreNotchSwitchToggled:" destination="Hvg-wi-ejt" eventType="valueChanged" id="MFe-PR-nYV"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -427,11 +461,12 @@
                                                 <constraint firstItem="RWN-c4-GR6" firstAttribute="leading" secondItem="Oc5-56-86R" secondAttribute="leadingMargin" id="N7n-ch-9uV"/>
                                                 <constraint firstItem="RWN-c4-GR6" firstAttribute="centerY" secondItem="Oc5-56-86R" secondAttribute="centerY" id="SA9-z7-Oc0"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="FNl-lQ-Zk9" secondAttribute="trailing" id="T9f-dh-BDW"/>
+                                                <constraint firstItem="FNl-lQ-Zk9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RWN-c4-GR6" secondAttribute="trailing" constant="8" symbolic="YES" id="aeB-TP-Wdl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="6KW-Kf-UZy">
-                                        <rect key="frame" x="0.0" y="343.50000034679067" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="393.50000034679067" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6KW-Kf-UZy" id="RAf-OO-yey">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -446,7 +481,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lMc-bl-CP4">
                                                     <rect key="frame" x="345" y="9.5" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="dataSaveSwitchToggled:" destination="Hvg-wi-ejt" eventType="valueChanged" id="hml-nc-g5r"/>
+                                                        <action selector="dataSaveSwitchToggled:" destination="Hvg-wi-ejt" eventType="valueChanged" id="3LA-bq-g8c"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -454,6 +489,7 @@
                                                 <constraint firstItem="jW4-Ca-Tev" firstAttribute="centerY" secondItem="RAf-OO-yey" secondAttribute="centerY" id="22Z-Gb-rzZ"/>
                                                 <constraint firstItem="jW4-Ca-Tev" firstAttribute="leading" secondItem="RAf-OO-yey" secondAttribute="leadingMargin" id="4O6-jX-8dY"/>
                                                 <constraint firstItem="lMc-bl-CP4" firstAttribute="trailing" secondItem="RAf-OO-yey" secondAttribute="trailingMargin" id="M6q-zf-hFA"/>
+                                                <constraint firstItem="lMc-bl-CP4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jW4-Ca-Tev" secondAttribute="trailing" constant="8" symbolic="YES" id="Mcg-Fd-TiA"/>
                                                 <constraint firstItem="lMc-bl-CP4" firstAttribute="centerY" secondItem="RAf-OO-yey" secondAttribute="centerY" id="phY-rd-mWO"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -464,11 +500,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="ZcR-BP-94R"/>
                     <connections>
-                        <outlet property="currentDisplayImageCountLabel" destination="9eT-Wa-GSe" id="IfW-NS-iix"/>
-                        <outlet property="dataSaveSwitch" destination="lMc-bl-CP4" id="ra8-Ux-CnR"/>
-                        <outlet property="displayImageCountSlider" destination="OEu-xU-DK2" id="bRJ-mL-t2K"/>
-                        <outlet property="hideNotchSwitch" destination="FNl-lQ-Zk9" id="Gc3-rP-w5F"/>
-                        <outlet property="imageRatingSegmentedController" destination="Wa9-9h-QPw" id="pCh-Gz-pmL"/>
+                        <outlet property="currentFetchLimitLabel" destination="9eT-Wa-GSe" id="Tgr-nF-X9E"/>
+                        <outlet property="dataSaveSwitch" destination="lMc-bl-CP4" id="Blz-9z-cen"/>
+                        <outlet property="fetchLimitSlider" destination="OEu-xU-DK2" id="Dbx-oY-8Gb"/>
+                        <outlet property="ignoreNotchSwitch" destination="FNl-lQ-Zk9" id="Uej-wW-Dsv"/>
+                        <outlet property="imageRatingSegment" destination="Wa9-9h-QPw" id="3lx-wu-P3o"/>
+                        <outlet property="languageTextField" destination="z34-jF-Rm5" id="eV5-Wn-iRV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yhX-DY-G4N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -505,6 +542,9 @@
         <image name="questionmark" catalog="system" width="96" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

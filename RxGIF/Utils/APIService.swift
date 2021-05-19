@@ -8,6 +8,21 @@
 import Foundation
 import RxSwift
 
+func getQuery(keyword: String?) -> String{
+    guard let keyword = keyword else { return "&q=cat" }
+    return "&q=\(keyword)"
+}
+
+func getSettings(offset: Int) -> String {
+    let userDefaults = UserDefaults.standard
+    let limit = userDefaults.integer(forKey: "Limit")
+    let rating = userDefaults.string(forKey: "Rating") ?? "g"
+    let language = userDefaults.string(forKey: "Language") ?? "en"
+    let settings = "&limit=\(limit)&offset=\(offset)&rating=\(rating)&lang=\(language)"
+    
+    return settings
+}
+
 class APIService {
     enum fetchMode {
         case search
@@ -20,12 +35,11 @@ class APIService {
         
         switch(mode) {
         case .search:
-            guard let keyword = keyword else { return }
-            apiURL = URL(string: searchAPI + API_KEY + searchQuery + keyword + getSettings(offset: 0))
+            apiURL = URL(string: baseAPI + searchAPI + API_KEY + getQuery(keyword: keyword) + getSettings(offset: 0))
         case .random:
-            apiURL = URL(string: randomAPI + API_KEY + getSettings(offset: 0))
+            apiURL = URL(string: baseAPI + randomAPI + API_KEY + getSettings(offset: 0))
         case .trending:
-            apiURL = URL(string: trendingAPI + API_KEY + getSettings(offset: 0))
+            apiURL = URL(string: baseAPI + trendingAPI + API_KEY + getSettings(offset: 0))
         }
         
         guard let apiURL = apiURL else { return }
