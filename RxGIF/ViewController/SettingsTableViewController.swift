@@ -10,9 +10,22 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
     // MARK: - Properties
     
-    let languagePicker = UIPickerView()
-    lazy var toolBar = UIToolbar()
-    lazy var button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissPicker))
+    lazy var languagePicker : UIPickerView = {
+        let picker = UIPickerView()
+        picker.delegate = self
+        picker.dataSource = self
+        return picker
+    }()
+    
+    lazy var toolBar : UIToolbar = {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
+        toolBar.sizeToFit()
+        toolBar.setItems([self.barButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        return toolBar
+    }()
+    
+    lazy var barButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissPicker))
         
     // MARK: - IBOutlets
     
@@ -29,7 +42,6 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.initialSettings()
-        self.configureLanguagePicker()
         self.configureUI()
     }
     
@@ -51,6 +63,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func configureUI() {
+        self.languageTextField.inputView = languagePicker
+        self.languageTextField.inputAccessoryView = toolBar
         self.languageTextField.tintColor = .clear
         
         let userDefaults = UserDefaults.standard
@@ -64,17 +78,6 @@ class SettingsTableViewController: UITableViewController {
         guard let language = language else { return }
         self.languageTextField.text = Locale.current.localizedString(forLanguageCode: language) ?? language
         languagePicker.selectRow(languages.firstIndex(of: language) ?? 0, inComponent: 0, animated: false)
-    }
-    
-    func configureLanguagePicker() {
-        languagePicker.delegate = self
-        languagePicker.dataSource = self
-        self.languageTextField.inputView = languagePicker
-        
-        toolBar.sizeToFit()
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        self.languageTextField.inputAccessoryView = toolBar
     }
     
     // MARK: - IBActions
@@ -111,7 +114,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @objc func dismissPicker() {
-        self.view.endEditing(true)
+        self.languageTextField.resignFirstResponder()
     }
 }
 
