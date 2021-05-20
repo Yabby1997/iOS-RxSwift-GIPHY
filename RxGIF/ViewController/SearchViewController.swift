@@ -9,6 +9,7 @@ import UIKit
 import FLAnimatedImage
 import RxCocoa
 import RxSwift
+import RxDataSources
 import Nuke
 import NukeFLAnimatedImagePlugin
 import Hero
@@ -18,10 +19,43 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
     
     let cellIdentifier: String = "SearchViewCell"
+    var isLoading: Bool = true
+    
     var viewModel: SearchViewModel = SearchViewModel()
     var disposeBag: DisposeBag = DisposeBag()
+    
     let searchController = UISearchController(searchResultsController: nil)
     let refreshControl = UIRefreshControl()
+    var loadingView: LoadingReusableView?
+    
+    typealias DataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Gif>>
+    lazy var dataSource : DataSource = {
+        let dataSource = DataSource(
+            configureCell: { _, collectionView, indexPath, item in
+                let cell = self.resultCollectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! GifCollectionViewCell
+                cell.backgroundColor = .systemGray5
+
+                let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
+                let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
+
+                Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
+                cell.thumbnailImageView.contentMode = .scaleAspectFill
+                cell.thumbnailImageView.heroID = item.id
+                
+                return cell
+            },
+            configureSupplementaryView: { _, collectionView, kind, indexPath in
+                switch kind {
+                    case UICollectionView.elementKindSectionFooter:
+                        let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingReusableView", for: indexPath) as! LoadingReusableView
+                        return aFooterView
+                    default:
+                        return UICollectionReusableView()
+                }
+            })
+
+        return dataSource
+    }()
     
     // MARK: - IBOutlets
     
@@ -32,8 +66,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.configureUI()
-    
+        
         self.searchController.searchBar.rx.text.orEmpty
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
@@ -56,18 +91,12 @@ class SearchViewController: UIViewController {
                 self.resultCollectionView.backgroundView?.isHidden = gifs.count > 0 ? true : false
                 return true
             })
-            .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
-                
-                cell.backgroundColor = .systemGray5
-                
-                let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
-                let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
-                
-                Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
-                cell.thumbnailImageView.contentMode = .scaleAspectFill
-                cell.thumbnailImageView.heroID = item.id
+            .map{ gifs in
+                [SectionModel<String, Gif>(model: "", items: gifs)]
             }
+            .bind(to: resultCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
     }
 
     // MARK: - Helpers
@@ -85,11 +114,15 @@ class SearchViewController: UIViewController {
         
         self.resultCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
         self.searchController.searchBar.delegate = self
         self.resultCollectionView.keyboardDismissMode = .onDrag
         
         self.refreshControl.addTarget(self, action: #selector(self.refreshResults), for: .valueChanged)
         self.resultCollectionView.refreshControl = self.refreshControl
+        
+        let loadingReusableNib = UINib(nibName: "LoadingReusableView", bundle: nil)
+        self.resultCollectionView.register(loadingReusableNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "loadingReusableView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,12 +150,53 @@ extension SearchViewController: UICollectionViewDelegate {
         detailViewController.gif = self.viewModel.gifObservable.value[indexPath.row]
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if self.isLoading {
+            return CGSize.zero
+        } else {
+            return CGSize(width: collectionView.bounds.size.width, height: 55)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.loadingView?.loadingIndicator.startAnimating()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.loadingView?.loadingIndicator.stopAnimating()
+        }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingresuableviewid", for: indexPath) as! LoadingReusableView
+            self.loadingView = aFooterView
+            self.loadingView?.backgroundColor = UIColor.clear
+            return aFooterView
+        }
+        return UICollectionReusableView()
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
@@ -136,6 +210,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: width, height: width)
     }
+    
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {

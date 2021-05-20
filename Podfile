@@ -10,6 +10,7 @@ target 'RxGIF' do
   pod 'FLAnimatedImage'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources'
   pod 'Nuke'
   pod 'Nuke-FLAnimatedImage-Plugin'
   pod 'NotificationBannerSwift', '~> 3.0.0'

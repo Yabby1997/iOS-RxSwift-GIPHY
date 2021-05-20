@@ -14,6 +14,8 @@
 		1DA21E2226497D3A00E5C76A /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA21E2126497D3A00E5C76A /* RandomViewController.swift */; };
 		1DA21E2426497D7600E5C76A /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA21E2326497D7600E5C76A /* RandomViewModel.swift */; };
 		1DD01684265526F500E3E386 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD01683265526F500E3E386 /* CustomTextField.swift */; };
+		1DD01687265568F700E3E386 /* LoadingReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD01685265568F700E3E386 /* LoadingReusableView.swift */; };
+		1DD01688265568F700E3E386 /* LoadingReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DD01686265568F700E3E386 /* LoadingReusableView.xib */; };
 		1DD7AB5E264D46CD0085CDB5 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD7AB5D264D46CD0085CDB5 /* TrendingViewModel.swift */; };
 		1DD7AB62264F30000085CDB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DD7AB61264F30000085CDB5 /* Assets.xcassets */; };
 		1DFD49882642E0580009D052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD49872642E0580009D052 /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 		1DA21E2126497D3A00E5C76A /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
 		1DA21E2326497D7600E5C76A /* RandomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
 		1DD01683265526F500E3E386 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		1DD01685265568F700E3E386 /* LoadingReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingReusableView.swift; sourceTree = "<group>"; };
+		1DD01686265568F700E3E386 /* LoadingReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingReusableView.xib; sourceTree = "<group>"; };
 		1DD7AB5D264D46CD0085CDB5 /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 		1DD7AB61264F30000085CDB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DFD49842642E0580009D052 /* RxGIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxGIF.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DD016892655690B00E3E386 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				1DD01686265568F700E3E386 /* LoadingReusableView.xib */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
 		1DFD497B2642E0580009D052 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +103,7 @@
 		1DFD49862642E0580009D052 /* RxGIF */ = {
 			isa = PBXGroup;
 			children = (
+				1DD016892655690B00E3E386 /* XIB */,
 				1DFD49AF2642EA6F0009D052 /* Utils */,
 				1DFD49A12642E1490009D052 /* App */,
 				1DFD499F2642E13F0009D052 /* Model */,
@@ -105,6 +118,7 @@
 		1DFD499C2642E1290009D052 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1DD01685265568F700E3E386 /* LoadingReusableView.swift */,
 				1D1124572654ECDA004B0287 /* TableViewController.swift */,
 				1D6BD3A5265233E20072DA90 /* SettingsTableViewController.swift */,
 				1DFD49C12642F0B10009D052 /* DetailViewController.swift */,
@@ -242,6 +256,7 @@
 			files = (
 				1DFD49942642E05B0009D052 /* LaunchScreen.storyboard in Resources */,
 				1DD7AB62264F30000085CDB5 /* Assets.xcassets in Resources */,
+				1DD01688265568F700E3E386 /* LoadingReusableView.xib in Resources */,
 				1DFD498F2642E0580009D052 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +318,7 @@
 				1DFD49882642E0580009D052 /* AppDelegate.swift in Sources */,
 				1DD7AB5E264D46CD0085CDB5 /* TrendingViewModel.swift in Sources */,
 				1D319860264D4161000A53DB /* TrendingViewController.swift in Sources */,
+				1DD01687265568F700E3E386 /* LoadingReusableView.swift in Sources */,
 				1DD01684265526F500E3E386 /* CustomTextField.swift in Sources */,
 				1D6BD3A6265233E20072DA90 /* SettingsTableViewController.swift in Sources */,
 				1DFD49C22642F0B10009D052 /* DetailViewController.swift in Sources */,
