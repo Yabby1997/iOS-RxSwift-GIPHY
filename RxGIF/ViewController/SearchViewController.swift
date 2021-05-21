@@ -105,6 +105,7 @@ class SearchViewController: UIViewController {
         ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
         
         self.navigationController?.isHeroEnabled = true
+        self.navigationController?.heroNavigationAnimationType = .fade
         
         self.searchController.searchBar.placeholder = "검색어를 입력해주세요."
         self.searchController.obscuresBackgroundDuringPresentation = false

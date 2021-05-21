@@ -53,6 +53,7 @@ class TrendingViewController: UIViewController {
     
     func configureUI() {
         self.navigationController?.isHeroEnabled = true
+        self.navigationController?.heroNavigationAnimationType = .fade
         
         self.resultCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
