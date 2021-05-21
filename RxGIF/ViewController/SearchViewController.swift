@@ -108,6 +108,7 @@ class SearchViewController: UIViewController {
         
         self.searchController.searchBar.placeholder = "검색어를 입력해주세요."
         self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
         
         self.navigationItem.searchController = searchController
         self.resultCollectionView.backgroundView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
@@ -210,8 +211,6 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: width, height: width)
     }
-    
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
