@@ -41,26 +41,10 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initialSettings()
         self.configureUI()
     }
     
     // MARK: - Helpers
-    
-    func initialSettings() {
-        let userDefaults = UserDefaults.standard
-        
-        userDefaults.register(
-            defaults: [
-                "Limit": 30,
-                "RatingIndex": 0,
-                "Rating": "g",
-                "Language": "en",
-                "IgnoreNotch": true,
-                "DataSave": false
-            ]
-        )
-    }
     
     func configureUI() {
         self.languageTextField.inputView = languagePicker
