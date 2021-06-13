@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D1124582654ECDA004B0287 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1124572654ECDA004B0287 /* TableViewController.swift */; };
 		1D319860264D4161000A53DB /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D31985F264D4161000A53DB /* TrendingViewController.swift */; };
 		1D55564F2648EB02002EA16B /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55564E2648EB02002EA16B /* EmptyResultView.swift */; };
 		1D6BD3A6265233E20072DA90 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BD3A5265233E20072DA90 /* SettingsTableViewController.swift */; };
@@ -33,7 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D1124572654ECDA004B0287 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1D31985F264D4161000A53DB /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		1D55564E2648EB02002EA16B /* EmptyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultView.swift; sourceTree = "<group>"; };
 		1D6BD3A5265233E20072DA90 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = RxGIF/ViewController/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -119,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				1DD01685265568F700E3E386 /* LoadingReusableView.swift */,
-				1D1124572654ECDA004B0287 /* TableViewController.swift */,
 				1D6BD3A5265233E20072DA90 /* SettingsTableViewController.swift */,
 				1DFD49C12642F0B10009D052 /* DetailViewController.swift */,
 				1DFD498B2642E0580009D052 /* SearchViewController.swift */,
@@ -142,6 +139,7 @@
 		1DFD499E2642E1330009D052 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1DD01683265526F500E3E386 /* CustomTextField.swift */,
 				1DFD49A42642E1B10009D052 /* GifCollectionViewCell.swift */,
 				1D55564E2648EB02002EA16B /* EmptyResultView.swift */,
 			);
@@ -173,7 +171,6 @@
 			children = (
 				1DFD49D02642FA9F0009D052 /* APIService.swift */,
 				1DFD49DD26430B0D0009D052 /* Constants.swift */,
-				1DD01683265526F500E3E386 /* CustomTextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -323,7 +320,6 @@
 				1D6BD3A6265233E20072DA90 /* SettingsTableViewController.swift in Sources */,
 				1DFD49C22642F0B10009D052 /* DetailViewController.swift in Sources */,
 				1DFD498A2642E0580009D052 /* SceneDelegate.swift in Sources */,
-				1D1124582654ECDA004B0287 /* TableViewController.swift in Sources */,
 				1DFD49C62642F52C0009D052 /* Gif.swift in Sources */,
 				1DA21E2226497D3A00E5C76A /* RandomViewController.swift in Sources */,
 				1DFD49D12642FA9F0009D052 /* APIService.swift in Sources */,
