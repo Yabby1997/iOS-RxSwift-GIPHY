@@ -27,7 +27,7 @@ class TrendingViewController: UIViewController {
         collectionView.register(GifCollectionViewCell.self, forCellWithReuseIdentifier: self.cellIdentifier)
         collectionView.keyboardDismissMode = .onDrag
         collectionView.refreshControl = self.refreshControl
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor =  UIColor.systemBackground
         
         return collectionView
     }()
@@ -79,7 +79,6 @@ class TrendingViewController: UIViewController {
                 let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
                 
                 Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
-                cell.thumbnailImageView.contentMode = .scaleAspectFill
                 cell.thumbnailImageView.heroID = item.id
             }
             .disposed(by: disposeBag)

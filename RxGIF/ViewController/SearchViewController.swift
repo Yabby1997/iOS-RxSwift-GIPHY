@@ -63,7 +63,7 @@ class SearchViewController: UIViewController {
         collectionView.backgroundView = self.emptyResultView
         collectionView.keyboardDismissMode = .onDrag
         collectionView.refreshControl = self.refreshControl
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor =  UIColor.systemBackground
         
         return collectionView
     }()
