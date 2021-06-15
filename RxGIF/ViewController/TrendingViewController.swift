@@ -19,11 +19,25 @@ class TrendingViewController: UIViewController {
     let cellIdentifier: String = "TrendingViewCell"
     var viewModel: TrendingViewModel = TrendingViewModel()
     var disposeBag: DisposeBag = DisposeBag()
-    let refreshControl = UIRefreshControl()
     
-    // MARK: - IBOutlets
+    lazy var resultCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(GifCollectionViewCell.self, forCellWithReuseIdentifier: self.cellIdentifier)
+        collectionView.keyboardDismissMode = .onDrag
+        collectionView.refreshControl = self.refreshControl
+        collectionView.backgroundColor = .white
+        
+        return collectionView
+    }()
     
-    @IBOutlet weak var resultCollectionView: UICollectionView!
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshResults), for: .valueChanged)
+        
+        return refreshControl
+    }()
     
     // MARK: - Lifecycles
     
@@ -32,7 +46,29 @@ class TrendingViewController: UIViewController {
         ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
         self.viewModel.fetchTrendingGif()
         self.configureUI()
+        self.bindUI()
+    }
+
+    // MARK: - Helpers
+    
+    func configureUI() {
+        self.navigationController?.isHeroEnabled = true
+        self.navigationController?.heroNavigationAnimationType = .fade
         
+        self.resultCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        self.view.addSubview(resultCollectionView)
+        
+        self.resultCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.view.snp.topMargin)
+            $0.bottom.equalTo(self.view.snp.bottomMargin)
+            $0.left.equalTo(self.view.snp.left)
+            $0.right.equalTo(self.view.snp.right)
+        }
+    }
+    
+    func bindUI() {
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
@@ -47,19 +83,6 @@ class TrendingViewController: UIViewController {
                 cell.thumbnailImageView.heroID = item.id
             }
             .disposed(by: disposeBag)
-    }
-
-    // MARK: - Helpers
-    
-    func configureUI() {
-        self.navigationController?.isHeroEnabled = true
-        self.navigationController?.heroNavigationAnimationType = .fade
-        
-        self.resultCollectionView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        
-        self.refreshControl.addTarget(self, action: #selector(self.refreshResults), for: .valueChanged)
-        self.resultCollectionView.refreshControl = self.refreshControl
     }
     
     // MARK: - IBActions
