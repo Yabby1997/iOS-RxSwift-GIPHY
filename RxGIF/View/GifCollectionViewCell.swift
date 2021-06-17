@@ -14,6 +14,7 @@ class GifCollectionViewCell: UICollectionViewCell {
     
     lazy var thumbnailImageView: FLAnimatedImageView = {
         let imageView = FLAnimatedImageView()
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .systemGray5
         imageView.contentMode = .scaleAspectFill
         
@@ -36,7 +37,7 @@ class GifCollectionViewCell: UICollectionViewCell {
     
     func configureUI() {
         self.addSubview(self.thumbnailImageView)
-        
+
         self.thumbnailImageView.snp.makeConstraints {
             $0.top.equalTo(self.snp.top)
             $0.bottom.equalTo(self.snp.bottom)
