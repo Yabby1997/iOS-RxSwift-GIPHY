@@ -50,7 +50,11 @@ class SearchViewController: UIViewController {
         return dataSource
     }()
     
-    lazy var emptyResultView: EmptyResultView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
+    lazy var emptyResultView: EmptyResultView = {
+        let resultView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
+        return resultView
+    }()
+    
     lazy var loadingReusableNib = UINib(nibName: "LoadingReusableView", bundle: nil)
     var loadingView: LoadingReusableView?
     
