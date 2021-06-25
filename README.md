@@ -3,7 +3,7 @@
 > RxSwift를 공부하기위해 개발한 GIPHY 검색 어플리케이션
 
 ## 개발 목표
-RxSwift를 이용한 앱을 제작해보기로 마음먹은 상황에서 여러 예제들을 찾아보던 중, [BringMyOwnBeer](https://github.com/fimuxd/BringMyOwnBeer-) 라는 RxSwift를 사용한 MVVM 예제를 발견하였고, 유사한방식으로 _API를 이용해 재밌는 앱을 만들면서 RxSwift에 익숙해져 보는게 좋겠다_는 판단에 개발하게 되었습니다.  
+RxSwift를 이용한 앱을 제작해보기로 마음먹은 상황에서 여러 예제들을 찾아보던 중, [BringMyOwnBeer](https://github.com/fimuxd/BringMyOwnBeer-) 라는 RxSwift를 사용한 MVVM 예제를 발견하였고, 유사한방식으로 *API를 이용해 재밌는 앱을 만들면서 RxSwift에 익숙해져 보는게 좋겠다*는 판단에 개발하게 되었습니다.  
 
 ## 기능
 | 트렌드 | 검색 | 복사/붙여넣기 | 설정 |
@@ -36,4 +36,4 @@ RxSwift를 이용한 앱을 제작해보기로 마음먹은 상황에서 여러 
 - [ ] App Store 출시해보기
 
 ## TMI
-[여기](https://www.notion.so/yabby/RxGIF-e2976236ff7f4e1386f95433a824f5bc) 에서 개발 로그를 확인할 수 있습니다.
+[노션](https://www.notion.so/yabby/RxGIF-e2976236ff7f4e1386f95433a824f5bc)에서 개발 로그를 확인할 수 있습니다.
