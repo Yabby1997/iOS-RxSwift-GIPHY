@@ -1,3 +1,2 @@
 # RxGIF
-![search](./screenshots/search.png)
-![detail](./screenshots/detail.png)
+![search](./screenshots/appearance.png)
