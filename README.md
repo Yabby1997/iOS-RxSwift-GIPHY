@@ -3,11 +3,9 @@
 > RxSwift를 공부하기위해 개발한 GIPHY 검색 어플리케이션
 
 ## 개발 목표
-----
 RxSwift를 이용한 앱을 제작해보기로 마음먹은 상황에서 여러 예제들을 찾아보던 중, [BringMyOwnBeer](https://github.com/fimuxd/BringMyOwnBeer-) 라는 RxSwift를 사용한 MVVM 예제를 발견하였고, 유사한방식으로 _API를 이용해 재밌는 앱을 만들면서 RxSwift에 익숙해져 보는게 좋겠다_는 판단에 개발하게 되었습니다.  
 
 ## 기능
-----
 | 트렌드 | 검색 | 복사/붙여넣기 | 설정 |
 |:---:|:---:|:---:|:---:|
 |![트렌드](./screenshots/trending.gif)|![검색](./screenshots/searching.gif)|![복붙](./screenshots/copying.gif)|![설정](./screenshots/setting.gif)|
@@ -20,7 +18,6 @@ RxSwift를 이용한 앱을 제작해보기로 마음먹은 상황에서 여러 
 > [GIPHY](https://developers.giphy.com/) API를 사용합니다. 
 
 ## 사용 라이브러리
-----
 + [SnapKit](https://github.com/SnapKit/SnapKit) : Auto Layout을 코드만으로 설정할 수 있도록 도와주는 라이브러리
 + [RxSwift](https://github.com/ReactiveX/RxSwift) : 비동기, 이벤트 기반 프로그래밍 라이브러리
 + [FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage) : 움직이는 이미지를 지원하지 않는 UIImageView를 대체할 수 있는 컴포넌트
