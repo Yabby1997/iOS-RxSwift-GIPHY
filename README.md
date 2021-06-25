@@ -25,12 +25,15 @@ RxSwift를 이용한 앱을 제작해보기로 마음먹은 상황에서 여러 
 + [NotificationBannerSwift](https://github.com/Daltron/NotificationBanner) : 상단 배너에 알림을 띄워주는 컴포넌트
 + [Hero](https://github.com/HeroTransitions/Hero) : 다양한 스타일의 View 전환 애니메이션을 제공하는 라이브러리
 
-## 목표
-- [x] GIPHY API 적용해보기
-- [x] RxSwift 사용해보기
-- [x] Storyboard를 SnapKit으로 대체해보기
-- [x] Image Cache 적용해보기
-- [x] 뷰 트랜지션 적용해보기
-- [x] 설정 기능 구현해보기
+## To-do list
+- [x] ~~GIPHY API 적용해보기~~
+- [x] ~~RxSwift 사용해보기~~
+- [x] ~~Storyboard를 SnapKit으로 대체해보기~~
+- [x] ~~Image Cache 적용해보기~~
+- [x] ~~뷰 트랜지션 적용해보기~~
+- [x] ~~설정 기능 구현해보기~~
 - [ ] 무한스크롤 구현해보기
 - [ ] App Store 출시해보기
+
+## TMI
+[여기](https://www.notion.so/yabby/RxGIF-e2976236ff7f4e1386f95433a824f5bc) 에서 개발 로그를 확인할 수 있습니다.
