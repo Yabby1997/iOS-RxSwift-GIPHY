@@ -16,6 +16,7 @@ class SearchViewModel {
     var recentKeyword: String?
     
     func searchGif(keyword: String) {
+        print("??")
         self.recentKeyword = keyword
         ImageCache.shared.removeAll()
         _ = APIService.fetchGifRx(mode: .search, keyword: keyword)

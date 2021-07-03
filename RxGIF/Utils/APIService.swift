@@ -41,6 +41,7 @@ class APIService {
         case .trending:
             apiURL = URL(string: baseAPI + trendingAPI + API_KEY + getSettings(offset: 0))
         }
+        print(apiURL)
         
         guard let apiURL = apiURL else { return }
         

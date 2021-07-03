@@ -9,10 +9,10 @@ import UIKit
 import FLAnimatedImage
 import RxCocoa
 import RxSwift
-import RxDataSources
 import Nuke
 import NukeFLAnimatedImagePlugin
 import Hero
+import SnapKit
 
 class SearchViewController: UIViewController {
 
@@ -24,43 +24,51 @@ class SearchViewController: UIViewController {
     var viewModel: SearchViewModel = SearchViewModel()
     var disposeBag: DisposeBag = DisposeBag()
     
-    let searchController = UISearchController(searchResultsController: nil)
-    let refreshControl = UIRefreshControl()
-    var loadingView: LoadingReusableView?
-    
-    typealias DataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Gif>>
-    lazy var dataSource : DataSource = {
-        let dataSource = DataSource(
-            configureCell: { _, collectionView, indexPath, item in
-                let cell = self.resultCollectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! GifCollectionViewCell
-                cell.backgroundColor = .systemGray5
-
-                let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
-                let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
-
-                Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
-                cell.thumbnailImageView.contentMode = .scaleAspectFill
-                cell.thumbnailImageView.heroID = item.id
-                
-                return cell
-            },
-            configureSupplementaryView: { _, collectionView, kind, indexPath in
-                switch kind {
-                    case UICollectionView.elementKindSectionFooter:
-                        let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingReusableView", for: indexPath) as! LoadingReusableView
-                        return aFooterView
-                    default:
-                        return UICollectionReusableView()
-                }
-            })
-
-        return dataSource
+    lazy var emptyResultView: EmptyResultView = {
+        let resultView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
+        return resultView
     }()
     
-    // MARK: - IBOutlets
+    lazy var loadingReusableNib = UINib(nibName: "LoadingReusableView", bundle: nil)
+    var loadingView: LoadingReusableView?
     
-    @IBOutlet weak var searchButton: UIBarButtonItem!
-    @IBOutlet weak var resultCollectionView: UICollectionView!
+    lazy var resultCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(GifCollectionViewCell.self, forCellWithReuseIdentifier: self.cellIdentifier)
+        collectionView.register(loadingReusableNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "loadingReusableView")
+        collectionView.backgroundView = self.emptyResultView
+        collectionView.keyboardDismissMode = .onDrag
+        collectionView.refreshControl = self.refreshControl
+        collectionView.backgroundColor =  UIColor.systemBackground
+        
+        return collectionView
+    }()
+    
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "검색어를 입력해주세요."
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.delegate = self
+        
+        return searchController
+    }()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshResults), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
+    lazy var searchButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem()
+        barButton.image = UIImage(systemName: "magnifyingglass")
+        
+        return barButton
+    }()
     
     // MARK: - Lifecycles
     
@@ -68,7 +76,33 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         self.configureUI()
+        self.bindUI()
+    }
+
+    // MARK: - Helpers
+    
+    func configureUI() {
+        ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
         
+        self.navigationController?.isHeroEnabled = true
+        self.navigationController?.heroNavigationAnimationType = .fade
+        self.navigationItem.searchController = searchController
+        self.navigationController?.navigationItem.rightBarButtonItem = self.searchButton
+        
+        self.resultCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        self.view.addSubview(resultCollectionView)
+        
+        self.resultCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.view.snp.topMargin)
+            $0.left.equalTo(self.view.snp.left)
+            $0.right.equalTo(self.view.snp.right)
+            $0.bottom.equalTo(self.view.snp.bottomMargin)
+        }
+    }
+    
+    func bindUI() {
         self.searchController.searchBar.rx.text.orEmpty
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
@@ -91,40 +125,18 @@ class SearchViewController: UIViewController {
                 self.resultCollectionView.backgroundView?.isHidden = gifs.count > 0 ? true : false
                 return true
             })
-            .map{ gifs in
-                [SectionModel<String, Gif>(model: "", items: gifs)]
-            }
-            .bind(to: resultCollectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
-    }
+            .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
 
-    // MARK: - Helpers
-    
-    func configureUI() {
-        ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
-        
-        self.navigationController?.isHeroEnabled = true
-        self.navigationController?.heroNavigationAnimationType = .fade
-        
-        self.searchController.searchBar.placeholder = "검색어를 입력해주세요."
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        
-        self.navigationItem.searchController = searchController
-        self.resultCollectionView.backgroundView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
-        
-        self.resultCollectionView.rx.setDelegate(self)
+                cell.backgroundColor = .systemGray5
+
+                let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
+                let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
+
+                Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
+                cell.thumbnailImageView.contentMode = .scaleAspectFill
+                cell.thumbnailImageView.heroID = item.id
+            }
             .disposed(by: disposeBag)
-        
-        self.searchController.searchBar.delegate = self
-        self.resultCollectionView.keyboardDismissMode = .onDrag
-        
-        self.refreshControl.addTarget(self, action: #selector(self.refreshResults), for: .valueChanged)
-        self.resultCollectionView.refreshControl = self.refreshControl
-        
-        let loadingReusableNib = UINib(nibName: "LoadingReusableView", bundle: nil)
-        self.resultCollectionView.register(loadingReusableNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "loadingReusableView")
     }
     
     override func viewWillAppear(_ animated: Bool) {

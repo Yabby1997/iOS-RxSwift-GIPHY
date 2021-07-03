@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,81 +15,14 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-X9-vsT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EDm-hJ-SSM">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="50" height="50"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchViewCell" id="66O-XF-NdG" customClass="GifCollectionViewCell" customModule="RxGIF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RT6-tL-1CR">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PC5-cC-kGo" customClass="FLAnimatedImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="PC5-cC-kGo" secondAttribute="height" multiplier="1:1" id="DxM-Nc-VqD"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="PC5-cC-kGo" secondAttribute="trailing" id="5uP-rp-VZH"/>
-                                                <constraint firstItem="PC5-cC-kGo" firstAttribute="leading" secondItem="RT6-tL-1CR" secondAttribute="leading" id="OId-cS-uhd"/>
-                                                <constraint firstAttribute="bottom" secondItem="PC5-cC-kGo" secondAttribute="bottom" id="OTr-n0-UWv"/>
-                                                <constraint firstItem="PC5-cC-kGo" firstAttribute="top" secondItem="RT6-tL-1CR" secondAttribute="top" id="Oe1-O1-dFa"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="thumbnailImageView" destination="PC5-cC-kGo" id="6fQ-zU-rbQ"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ftK-aV-69G">
-                                    <rect key="frame" x="0.0" y="128" width="414" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Qmd-Nv-5WO">
-                                            <rect key="frame" x="197" y="15" width="20" height="20"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Qmd-Nv-5WO" firstAttribute="centerX" secondItem="ftK-aV-69G" secondAttribute="centerX" id="5Hv-s2-6Np"/>
-                                        <constraint firstItem="Qmd-Nv-5WO" firstAttribute="centerY" secondItem="ftK-aV-69G" secondAttribute="centerY" id="PC3-vL-97a"/>
-                                    </constraints>
-                                </collectionReusableView>
-                            </collectionView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="bfN-X9-vsT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Mvb-MX-Cf1"/>
-                            <constraint firstItem="bfN-X9-vsT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SeO-JU-KeH"/>
-                            <constraint firstItem="bfN-X9-vsT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="snA-R9-ObA"/>
-                            <constraint firstItem="bfN-X9-vsT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tma-dU-tGz"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="RWW-2M-GNP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="d0l-v5-dBj">
-                            <color key="tintColor" systemColor="labelColor"/>
-                            <connections>
-                                <action selector="searchButtonTapped:" destination="BYZ-38-t0r" id="JEV-8w-rhg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search" id="RWW-2M-GNP"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="resultCollectionView" destination="bfN-X9-vsT" id="ag7-pv-bi6"/>
-                        <outlet property="searchButton" destination="d0l-v5-dBj" id="o4e-jO-s82"/>
                         <segue destination="A38-wN-Hx5" kind="push" identifier="segueToDetail" id="FyA-iy-0jv"/>
                     </connections>
                 </viewController>
@@ -247,60 +179,14 @@
                     <view key="view" contentMode="scaleToFill" id="FIf-1X-8pN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="be5-wZ-kdj">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jzn-ga-fgX">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrendingViewCell" id="QSV-7u-x0J" customClass="GifCollectionViewCell" customModule="RxGIF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="o20-1V-HmS">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qZl-n4-Aq1" customClass="FLAnimatedImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="qZl-n4-Aq1" secondAttribute="height" multiplier="1:1" id="SWP-xm-gFg"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="qZl-n4-Aq1" secondAttribute="trailing" id="GMq-3W-XAE"/>
-                                                <constraint firstAttribute="bottom" secondItem="qZl-n4-Aq1" secondAttribute="bottom" id="HoQ-HL-UZT"/>
-                                                <constraint firstItem="qZl-n4-Aq1" firstAttribute="top" secondItem="o20-1V-HmS" secondAttribute="top" id="wH0-Ly-80v"/>
-                                                <constraint firstItem="qZl-n4-Aq1" firstAttribute="leading" secondItem="o20-1V-HmS" secondAttribute="leading" id="zU2-Vc-0XQ"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="thumbnailImageView" destination="qZl-n4-Aq1" id="v9F-EU-ecT"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="sBd-c7-S9I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="sBd-c7-S9I" firstAttribute="trailing" secondItem="be5-wZ-kdj" secondAttribute="trailing" id="8lp-5T-JYb"/>
-                            <constraint firstItem="be5-wZ-kdj" firstAttribute="leading" secondItem="sBd-c7-S9I" secondAttribute="leading" id="Tuu-m7-Jh0"/>
-                            <constraint firstItem="be5-wZ-kdj" firstAttribute="top" secondItem="sBd-c7-S9I" secondAttribute="top" id="jfZ-XR-ddP"/>
-                            <constraint firstItem="sBd-c7-S9I" firstAttribute="bottom" secondItem="be5-wZ-kdj" secondAttribute="bottom" id="kIN-X7-TWm"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trending" id="do6-ms-F28"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="resultCollectionView" destination="be5-wZ-kdj" id="bYB-BA-j6L"/>
                         <segue destination="A38-wN-Hx5" kind="show" id="FiO-If-jmI"/>
                     </connections>
                 </viewController>
@@ -546,16 +432,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FyA-iy-0jv"/>
+        <segue reference="FiO-If-jmI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="crown" catalog="system" width="128" height="92"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="questionmark" catalog="system" width="96" height="128"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
