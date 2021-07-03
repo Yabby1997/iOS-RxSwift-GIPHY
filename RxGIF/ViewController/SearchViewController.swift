@@ -9,7 +9,6 @@ import UIKit
 import FLAnimatedImage
 import RxCocoa
 import RxSwift
-import RxDataSources
 import Nuke
 import NukeFLAnimatedImagePlugin
 import Hero
@@ -24,31 +23,6 @@ class SearchViewController: UIViewController {
     
     var viewModel: SearchViewModel = SearchViewModel()
     var disposeBag: DisposeBag = DisposeBag()
-    
-    typealias DataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Gif>>
-    
-    lazy var dataSource : DataSource = {
-        let dataSource = DataSource(
-            configureCell: { _, collectionView, indexPath, item in
-                let cell = self.resultCollectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! GifCollectionViewCell
-                let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
-                let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
-                Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
-                cell.thumbnailImageView.heroID = item.id
-                return cell
-            },
-            configureSupplementaryView: { _, collectionView, kind, indexPath in
-                switch kind {
-                    case UICollectionView.elementKindSectionFooter:
-                        let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingReusableView", for: indexPath) as! LoadingReusableView
-                        return aFooterView
-                    default:
-                        return UICollectionReusableView()
-                }
-            })
-
-        return dataSource
-    }()
     
     lazy var emptyResultView: EmptyResultView = {
         let resultView = EmptyResultView(image: UIImage(systemName: "info.circle")!, title: "검색결과가 없습니다.", message: "다른 검색어로 시도해주세요.")
@@ -151,10 +125,17 @@ class SearchViewController: UIViewController {
                 self.resultCollectionView.backgroundView?.isHidden = gifs.count > 0 ? true : false
                 return true
             })
-            .map{ gifs in
-                [SectionModel<String, Gif>(model: "", items: gifs)]
+            .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
+
+                cell.backgroundColor = .systemGray5
+
+                let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
+                let thumbnailURL = dataSaveOption ? item.smallThumbnailURL : item.thumbnailURL
+
+                Nuke.loadImage(with: thumbnailURL, options: nukeOptions, into: cell.thumbnailImageView)
+                cell.thumbnailImageView.contentMode = .scaleAspectFill
+                cell.thumbnailImageView.heroID = item.id
             }
-            .bind(to: resultCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
     
