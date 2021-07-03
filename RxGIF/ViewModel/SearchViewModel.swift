@@ -36,7 +36,7 @@ class SearchViewModel {
     }
     
     func fetchMore() {
-        _ = APIService.fetchGifRx(mode: .search, keyword: self.recentKeyword)
+        _ = APIService.fetchGifRx(mode: .search, keyword: self.recentKeyword, offset: self.gifObservable.value.count)
             .map { data -> GifResponseArray in
                 let object = try! JSONDecoder().decode(GifResponseArray.self, from: data)
                 return object

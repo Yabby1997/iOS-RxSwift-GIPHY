@@ -30,18 +30,17 @@ class APIService {
         case trending
     }
     
-    static func fetchGif(mode: fetchMode, keyword: String? = nil, onComplete: @escaping (Result<Data, Error>) -> Void) {
+    static func fetchGif(mode: fetchMode, keyword: String? = nil, offset: Int = 0, onComplete: @escaping (Result<Data, Error>) -> Void) {
         var apiURL: URL?
         
         switch(mode) {
         case .search:
-            apiURL = URL(string: baseAPI + searchAPI + API_KEY + getQuery(keyword: keyword) + getSettings(offset: 0))
+            apiURL = URL(string: baseAPI + searchAPI + API_KEY + getQuery(keyword: keyword) + getSettings(offset: offset))
         case .random:
-            apiURL = URL(string: baseAPI + randomAPI + API_KEY + getSettings(offset: 0))
+            apiURL = URL(string: baseAPI + randomAPI + API_KEY + getSettings(offset: offset))
         case .trending:
-            apiURL = URL(string: baseAPI + trendingAPI + API_KEY + getSettings(offset: 0))
+            apiURL = URL(string: baseAPI + trendingAPI + API_KEY + getSettings(offset: offset))
         }
-        print(apiURL)
         
         guard let apiURL = apiURL else { return }
         
@@ -63,9 +62,9 @@ class APIService {
         }.resume()
     }
     
-    static func fetchGifRx(mode: fetchMode, keyword: String? = nil) -> Observable<Data> {
+    static func fetchGifRx(mode: fetchMode, keyword: String? = nil, offset: Int = 0) -> Observable<Data> {
         return Observable.create() { emitter in
-            fetchGif(mode: mode, keyword: keyword) { result in
+            fetchGif(mode: mode, keyword: keyword, offset: offset) { result in
                 switch result {
                 case .success(let data) :
                     emitter.onNext(data)
