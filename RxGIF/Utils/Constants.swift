@@ -19,8 +19,6 @@ let nukeOptions = ImageLoadingOptions(
     transition: .fadeIn(duration: 0.45)
 )
 
-let collectionViewStartLoadingOffset: CGFloat = 20.0
-
 let errorGifURL = "https://media2.giphy.com/media/TqiwHbFBaZ4ti/giphy.gif?cid=6e4ee9ccj5w9ce7akqfmiuvkyb6ffs4e8v7if83qdouo1dl8&rid=giphy.gif&ct=g"
 
 let languages = ["en", "es", "pt", "id", "fr", "ar", "tr", "th", "vi", "de", "it", "ja", "zh-CN", "zh-TW", "ru", "ko", "pl", "nl", "ro", "hu", "sv", "cs", "hi", "bn", "da", "fa", "tl", "fi", "iw", "ms", "no", "uk"]

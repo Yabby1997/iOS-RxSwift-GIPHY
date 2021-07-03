@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UICollectionView {
-    func isNearToBottomEdge(contentOffset: CGPoint) -> Bool {
-        return contentOffset.y + self.frame.size.height + collectionViewStartLoadingOffset > self.contentSize.height
+    func isNearToBottomEdge(contentOffset: CGPoint, distance: CGFloat) -> Bool {
+        return contentOffset.y + self.frame.size.height > self.contentSize.height - distance
     }
 }

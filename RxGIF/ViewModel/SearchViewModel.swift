@@ -16,9 +16,7 @@ class SearchViewModel {
     var recentKeyword: String?
     
     func searchGif(keyword: String) {
-        print("??")
         self.recentKeyword = keyword
-        ImageCache.shared.removeAll()
         _ = APIService.fetchGifRx(mode: .search, keyword: keyword)
             .map { data -> GifResponseArray in
                 let object = try! JSONDecoder().decode(GifResponseArray.self, from: data)
@@ -26,6 +24,25 @@ class SearchViewModel {
             }
             .map { GifResponseArray -> [Gif] in
                 var gifArray: [Gif] = []
+                for each in GifResponseArray.gifs  {
+                    gifArray.append(Gif(from: each))
+                }
+                return gifArray
+            }
+            .take(1)
+            .subscribe(onNext: {
+                self.gifObservable.accept($0)
+            })
+    }
+    
+    func fetchMore() {
+        _ = APIService.fetchGifRx(mode: .search, keyword: self.recentKeyword)
+            .map { data -> GifResponseArray in
+                let object = try! JSONDecoder().decode(GifResponseArray.self, from: data)
+                return object
+            }
+            .map { GifResponseArray -> [Gif] in
+                var gifArray: [Gif] = self.gifObservable.value
                 for each in GifResponseArray.gifs  {
                     gifArray.append(Gif(from: each))
                 }
