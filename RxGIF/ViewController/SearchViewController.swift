@@ -104,7 +104,7 @@ class SearchViewController: UIViewController {
     
     func bindUI() {
         self.resultCollectionView.rx.contentOffset
-            .throttle(.milliseconds(300), latest: true, scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), latest: true, scheduler: MainScheduler.instance)
             .filter({ offset in
                 self.resultCollectionView.isNearToBottomEdge(contentOffset: offset, distance: 500)
             })
