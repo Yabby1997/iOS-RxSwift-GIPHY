@@ -13,6 +13,7 @@ import Nuke
 
 class TrendingViewModel {
     lazy var gifObservable = BehaviorRelay<[Gif]>(value: [])
+    lazy var isNearToBottom = BehaviorRelay<Bool>(value: false)
     
     func fetchTrendingGif() {
         _ = APIService.fetchGifRx(mode: .trending)

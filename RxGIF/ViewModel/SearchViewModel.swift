@@ -13,6 +13,7 @@ import Nuke
 
 class SearchViewModel {
     lazy var gifObservable = BehaviorRelay<[Gif]>(value: [])
+    lazy var isNearToBottom = BehaviorRelay<Bool>(value: false)
     var recentKeyword: String?
     
     func searchGif(keyword: String) {

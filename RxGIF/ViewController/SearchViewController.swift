@@ -104,11 +104,20 @@ class SearchViewController: UIViewController {
     
     func bindUI() {
         self.resultCollectionView.rx.contentOffset
-            .throttle(.seconds(1), latest: true, scheduler: MainScheduler.instance)
-            .filter({ offset in
+            .map { offset in
                 self.resultCollectionView.isNearToBottomEdge(contentOffset: offset, distance: 500)
+            }
+            .distinctUntilChanged()
+            .subscribe(onNext: {
+                self.viewModel.isNearToBottom.accept($0)
             })
-            .subscribe(onNext: { _ in
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.isNearToBottom
+            .filter({ isNear in
+                return isNear
+            })
+            .subscribe(onNext : { _ in
                 self.viewModel.fetchMore()
             })
             .disposed(by: self.disposeBag)
