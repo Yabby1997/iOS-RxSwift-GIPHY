@@ -69,6 +69,25 @@ class TrendingViewController: UIViewController {
     }
     
     func bindUI() {
+        self.resultCollectionView.rx.contentOffset
+            .map { offset in
+                self.resultCollectionView.isNearToBottomEdge(contentOffset: offset, distance: 500)
+            }
+            .distinctUntilChanged()
+            .subscribe(onNext: {
+                self.viewModel.isNearToBottom.accept($0)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.isNearToBottom
+            .filter({ isNear in
+                return isNear
+            })
+            .subscribe(onNext : { _ in
+                self.viewModel.fetchMore()
+            })
+            .disposed(by: self.disposeBag)
+        
         self.viewModel.gifObservable
             .observe(on: MainScheduler.instance)
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in

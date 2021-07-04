@@ -103,6 +103,25 @@ class SearchViewController: UIViewController {
     }
     
     func bindUI() {
+        self.resultCollectionView.rx.contentOffset
+            .map { offset in
+                self.resultCollectionView.isNearToBottomEdge(contentOffset: offset, distance: 500)
+            }
+            .distinctUntilChanged()
+            .subscribe(onNext: {
+                self.viewModel.isNearToBottom.accept($0)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.isNearToBottom
+            .filter({ isNear in
+                return isNear
+            })
+            .subscribe(onNext : { _ in
+                self.viewModel.fetchMore()
+            })
+            .disposed(by: self.disposeBag)
+        
         self.searchController.searchBar.rx.text.orEmpty
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
@@ -126,7 +145,7 @@ class SearchViewController: UIViewController {
                 return true
             })
             .bind(to: resultCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: GifCollectionViewCell.self)) { index, item, cell in
-
+                
                 cell.backgroundColor = .systemGray5
 
                 let dataSaveOption = UserDefaults.standard.bool(forKey: "DataSave")
@@ -164,26 +183,6 @@ extension SearchViewController: UICollectionViewDelegate {
         detailViewController.gif = self.viewModel.gifObservable.value[indexPath.row]
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if self.isLoading {
-            return CGSize.zero
-        } else {
-            return CGSize(width: collectionView.bounds.size.width, height: 55)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.loadingView?.loadingIndicator.startAnimating()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.loadingView?.loadingIndicator.stopAnimating()
-        }
-    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -195,16 +194,6 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionFooter {
-            let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingresuableviewid", for: indexPath) as! LoadingReusableView
-            self.loadingView = aFooterView
-            self.loadingView?.backgroundColor = UIColor.clear
-            return aFooterView
-        }
-        return UICollectionReusableView()
     }
 }
 
