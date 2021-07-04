@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 func getQuery(keyword: String?) -> String{
-    guard let keyword = keyword else { return "&q=cat" }
+    guard let keyword = keyword else { return "&q=" }
     return "&q=\(keyword)"
 }
 
