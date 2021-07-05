@@ -63,19 +63,17 @@ class EmptyResultView: UIView {
             $0.centerX.equalTo(self.snp.centerX)
             $0.width.equalTo(50)
             $0.height.equalTo(self.imageView.snp.width)
-            $0.top.equalTo(self.snp.top).offset(100)
+            $0.bottom.equalTo(self.titleLabel.snp.top).offset(-20)
         }
         
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.imageView.snp.bottom).offset(20)
-            $0.left.equalTo(self.snp.left).offset(20)
-            $0.right.equalTo(self.snp.right).offset(-20)
+            $0.centerX.equalTo(self.snp.centerX)
+            $0.centerY.equalTo(self.snp.centerY).offset(-50)
         }
         
         self.messageLabel.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
-            $0.left.equalTo(self.snp.left).offset(20)
-            $0.right.equalTo(self.snp.right).offset(-20)
+            $0.centerX.equalTo(self.snp.centerX)
         }
     }
 }
