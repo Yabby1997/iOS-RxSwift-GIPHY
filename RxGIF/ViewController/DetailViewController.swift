@@ -73,10 +73,9 @@ class DetailViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleContentMode))
         self.gifImageView.addGestureRecognizer(tapGesture)
         self.gifImageView.isUserInteractionEnabled = true
-        
         self.gifImageView.contentMode = .scaleAspectFill
-        
         self.gifImageView.insetsLayoutMarginsFromSafeArea = false
+        self.gifImageView.backgroundColor = .systemGray5
         
         self.gifImageView.snp.makeConstraints {
             self.notchIgnoredTopConstraint = $0.top.equalTo(self.view.snp.top).constraint
